@@ -215,7 +215,7 @@ class CoroutineTransformerMethodVisitor(
                 var cursor: AbstractInsnNode? = suspensionPoint.suspensionCallBegin.previous
                 for (argType in methodType.argumentTypes.reversed()) {
                     if (argType == CONTINUATION_ASM_TYPE) break
-                    cursor = cursor?.previous
+                    cursor = cursor?.findPreviousOrNull { it.isMeaningful }
                 }
                 if (cursor != null) {
                     val continuationLoad = cursor
