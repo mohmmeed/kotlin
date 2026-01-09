@@ -53,9 +53,3 @@ class ScriptRefinedCompilationConfigurationCacheOverConfigurationsProvider(
 
     override fun clearRefinedCompilationConfiguration(sourceCode: SourceCode): ResultWithDiagnostics<ScriptCompilationConfiguration>? = null
 }
-
-fun ScriptingHostConfiguration.withRefinedCompilationConfigurationCache(
-    implementation : ScriptRefinedCompilationConfigurationCache = ScriptRefinedCompilationConfigurationCacheImpl()
-): ScriptingHostConfiguration = with {
-    ScriptingHostConfiguration.scriptRefinedCompilationConfigurationsCache(implementation)
-}
