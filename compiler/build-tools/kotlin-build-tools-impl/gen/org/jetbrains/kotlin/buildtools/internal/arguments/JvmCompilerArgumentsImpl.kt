@@ -6,6 +6,7 @@
 package org.jetbrains.kotlin.buildtools.`internal`.arguments
 
 import java.lang.IllegalStateException
+import java.nio.`file`.Path
 import kotlin.Any
 import kotlin.Array
 import kotlin.Boolean
@@ -16,11 +17,13 @@ import kotlin.Suppress
 import kotlin.collections.List
 import kotlin.collections.MutableMap
 import kotlin.collections.MutableSet
+import kotlin.collections.emptyList
 import kotlin.collections.mutableMapOf
 import kotlin.collections.mutableSetOf
 import org.jetbrains.kotlin.buildtools.`internal`.DeepCopyable
 import org.jetbrains.kotlin.buildtools.`internal`.UseFromImplModuleRestricted
 import org.jetbrains.kotlin.buildtools.`internal`.arguments.JvmCompilerArgumentsImpl.Companion.CLASSPATH
+import org.jetbrains.kotlin.buildtools.`internal`.arguments.JvmCompilerArgumentsImpl.Companion.CLASSPATH_ENTRIES
 import org.jetbrains.kotlin.buildtools.`internal`.arguments.JvmCompilerArgumentsImpl.Companion.D
 import org.jetbrains.kotlin.buildtools.`internal`.arguments.JvmCompilerArgumentsImpl.Companion.EXPRESSION
 import org.jetbrains.kotlin.buildtools.`internal`.arguments.JvmCompilerArgumentsImpl.Companion.INCLUDE_RUNTIME
@@ -113,6 +116,10 @@ import org.jetbrains.kotlin.config.KotlinCompilerVersion.VERSION as KC_VERSION
 internal class JvmCompilerArgumentsImpl() : CommonCompilerArgumentsImpl(), JvmCompilerArguments,
     JvmCompilerArguments.Builder, DeepCopyable<JvmCompilerArgumentsImpl> {
   private val optionsMap: MutableMap<String, Any?> = mutableMapOf()
+
+  init {
+    optionsMap["CLASSPATH_ENTRIES"] = emptyList<Path>()
+  }
   init {
     applyCompilerArguments(K2JVMCompilerArguments())
   }
@@ -233,6 +240,7 @@ internal class JvmCompilerArgumentsImpl() : CommonCompilerArgumentsImpl(), JvmCo
     if (NO_REFLECT in this) { arguments.noReflect = get(NO_REFLECT)}
     if (NO_STDLIB in this) { arguments.noStdlib = get(NO_STDLIB)}
     if (SCRIPT_TEMPLATES in this) { arguments.scriptTemplates = get(SCRIPT_TEMPLATES)}
+    if (CLASSPATH_ENTRIES in this) { arguments.applyClasspathEntries(get(CLASSPATH_ENTRIES))}
     arguments.internalArguments = parseCommandLineArguments<K2JVMCompilerArguments>(internalArguments.toList()).internalArguments
     return arguments
   }
@@ -319,6 +327,7 @@ internal class JvmCompilerArgumentsImpl() : CommonCompilerArgumentsImpl(), JvmCo
     try { this[NO_REFLECT] = arguments.noReflect } catch (_: NoSuchMethodError) {  }
     try { this[NO_STDLIB] = arguments.noStdlib } catch (_: NoSuchMethodError) {  }
     try { this[SCRIPT_TEMPLATES] = arguments.scriptTemplates } catch (_: NoSuchMethodError) {  }
+    try { this[CLASSPATH_ENTRIES] = applyClasspathEntries(this[CLASSPATH_ENTRIES], arguments) } catch (_: NoSuchMethodError) {  }
     internalArguments.addAll(arguments.internalArguments.map { it.stringRepresentation })
   }
 
@@ -553,5 +562,8 @@ internal class JvmCompilerArgumentsImpl() : CommonCompilerArgumentsImpl(), JvmCo
 
     public val SCRIPT_TEMPLATES: JvmCompilerArgument<Array<String>?> =
         JvmCompilerArgument("SCRIPT_TEMPLATES")
+
+    public val CLASSPATH_ENTRIES: JvmCompilerArgument<List<Path>> =
+        JvmCompilerArgument("CLASSPATH_ENTRIES")
   }
 }
