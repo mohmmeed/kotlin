@@ -62,6 +62,7 @@ private val levelsToArgumentTransforms: Map<String, Map<String, ArgumentTransfor
     })
     put(actualJvmCompilerArguments.name, buildMap {
         with(actualJvmCompilerArguments) {
+            custom(CustomCompilerArguments.classpathEntries)
             drop("d") // destination is configured explicitly when instantiating operations
             drop("expression")
             drop("include-runtime") // we're only considering building into directories for now (not jars)

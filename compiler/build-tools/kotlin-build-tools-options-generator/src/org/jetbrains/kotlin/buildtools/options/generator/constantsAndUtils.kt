@@ -26,6 +26,7 @@ internal const val IMPL_ARGUMENTS_PACKAGE = "org.jetbrains.kotlin.buildtools.int
 internal const val API_PACKAGE = "org.jetbrains.kotlin.buildtools.api"
 internal const val API_ARGUMENTS_PACKAGE = "$API_PACKAGE.arguments"
 internal const val API_ENUMS_PACKAGE = "$API_ARGUMENTS_PACKAGE.enums"
+internal const val JAVA_FILE_PACKAGE = "java.nio.file"
 
 internal val ANNOTATION_EXPERIMENTAL = ClassName(API_ARGUMENTS_PACKAGE, "ExperimentalCompilerArgument")
 internal val ANNOTATION_USE_FROM_IMPL_RESTRICTED = ClassName("org.jetbrains.kotlin.buildtools.internal", "UseFromImplModuleRestricted")

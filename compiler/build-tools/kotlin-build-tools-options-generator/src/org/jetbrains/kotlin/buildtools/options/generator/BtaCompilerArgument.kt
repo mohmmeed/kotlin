@@ -101,4 +101,21 @@ object CustomCompilerArguments {
             ClassName(API_ARGUMENTS_PACKAGE, "CompilerPlugin")
         ),
     )
+
+    val classpathEntries = BtaCompilerArgument.CustomCompilerArgument(
+        name = "classpath-entries",
+        description = "A list of paths (directories and JAR/ZIP archives) to search for user class files.",
+        valueType = BtaCompilerArgumentValueType.CustomArgumentValueType(
+            type = listTypeNameOf(ClassName(JAVA_FILE_PACKAGE, "Path")),
+        ),
+        introducedSinceVersion = KotlinReleaseVersion.v2_3_20,
+        deprecatedSinceVersion = null,
+        removedSinceVersion = null,
+        applier = MemberName("org.jetbrains.kotlin.buildtools.internal.arguments", "applyClasspathEntries"),
+        defaultValue = CodeBlock.of(
+            "%M<%T>()",
+            MemberName("kotlin.collections", "emptyList"),
+            ClassName(JAVA_FILE_PACKAGE, "Path")
+        ),
+    )
 }
