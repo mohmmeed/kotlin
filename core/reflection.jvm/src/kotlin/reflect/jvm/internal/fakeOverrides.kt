@@ -151,7 +151,7 @@ internal fun computeFakeOverrideMembers(kClass: KClassImpl<*>): FakeOverrideMemb
                 originalContainerIfFakeOverride = notSubstitutedMember.overriddenStorage.originalContainerIfFakeOverride
                     ?: notSubstitutedMember.container,
             )
-            val member = notSubstitutedMember.shallowCopy(overriddenStorage)
+            val member = notSubstitutedMember.shallowCopy(notSubstitutedMember.container, overriddenStorage)
             val kotlinSignature = member.toEquatableCallableSignature(EqualityMode.KotlinSignature)
             if (declaredKotlinMembers.contains(kotlinSignature)) continue
             // Inherited signatures are always compared by JvmSignatures. Even for kotlin classes.
@@ -159,6 +159,7 @@ internal fun computeFakeOverrideMembers(kClass: KClassImpl<*>): FakeOverrideMemb
                 val c = minOf(a, b, CovariantOverrideComparator)
                 when (a is KFunction<*> && b is KFunction<*>) {
                     true -> c.shallowCopy(
+                        c.container,
                         c.overriddenStorage.copy(
                             forceIsOperator = a.isOperator || b.isOperator,
                             forceIsInfix = a.isInfix || b.isInfix,
