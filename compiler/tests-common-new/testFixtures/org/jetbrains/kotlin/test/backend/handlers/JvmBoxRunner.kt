@@ -289,7 +289,13 @@ open class JvmBoxRunner(testServices: TestServices) : JvmBinaryArtifactHandler(t
         classFileFactory: ClassFileFactory,
         reportProblems: Boolean
     ): GeneratedClassLoader {
-        val classLoader = generatedTestClassLoader(testServices, module, classFileFactory)
+        val configuration = testServices.compilerConfigurationProvider.getCompilerConfiguration(module, CompilationStage.FIRST)
+        val classLoader = when (configuration[TEST_CONFIGURATION_KIND_KEY]?.withReflection == true) {
+            true -> createClassLoaderWithEnabledNewFakeOverridesImplementation {
+                generatedTestClassLoader(testServices, module, classFileFactory)
+            }
+            false -> generatedTestClassLoader(testServices, module, classFileFactory)
+        }
         if (REQUIRES_SEPARATE_PROCESS !in module.directives && module.directives.singleOrZeroValue(JDK_KIND)?.requiresSeparateProcess != true) {
             val verificationSucceeded = CodegenTestUtil.verifyAllFilesWithAsm(classFileFactory, reportProblems)
             if (!verificationSucceeded) {
