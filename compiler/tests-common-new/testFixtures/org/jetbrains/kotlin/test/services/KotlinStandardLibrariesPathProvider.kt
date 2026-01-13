@@ -178,21 +178,14 @@ interface KotlinStandardLibrariesPathProvider : TestService {
         reflectWithNewFakeOverridesJarClassLoader.get()?.let { return it }
         synchronized(this) {
             reflectWithNewFakeOverridesJarClassLoader.get()?.let { return it }
-            withSystemProperty("kotlin.reflect.jvm.newFakeOverridesImplementation", "true") {
-                return createClassLoader(
+            return createClassLoaderWithEnabledNewFakeOverridesImplementation {
+                createClassLoader(
                     runtimeJarForTests(),
                     reflectJarForTests(),
                     scriptRuntimeJarForTests(),
                     kotlinTestJarForTests()
                 ).also { loader ->
                     reflectWithNewFakeOverridesJarClassLoader = SoftReference(loader)
-                    // Calling getNewFakeOverridesImplementation has the intentional side effect of caching
-                    // 'kotlin.reflect.jvm.newFakeOverridesImplementation' value
-                    val newFakeOverridesImplementation = loader
-                        .loadClass("kotlin.reflect.jvm.internal.SystemPropertiesKt")
-                        .getMethod("getNewFakeOverridesImplementation")
-                        .invoke(null)
-                    check(newFakeOverridesImplementation == true)
                 }
             }
         }
@@ -345,3 +338,16 @@ private inline fun <T> withSystemProperty(key: String, value: String, body: () -
         }
     }
 }
+
+internal fun <T : ClassLoader> createClassLoaderWithEnabledNewFakeOverridesImplementation(block: () -> T): T =
+    withSystemProperty("kotlin.reflect.jvm.newFakeOverridesImplementation", "true") {
+        // Calling getNewFakeOverridesImplementation has the intentional side effect of caching
+        // 'kotlin.reflect.jvm.newFakeOverridesImplementation' value
+        val loader = block()
+        val newFakeOverridesImplementation = loader
+            .loadClass("kotlin.reflect.jvm.internal.SystemPropertiesKt")
+            .getMethod("getNewFakeOverridesImplementation")
+            .invoke(null)
+        check(newFakeOverridesImplementation == true)
+        return loader
+    }
