@@ -147,7 +147,9 @@ internal fun computeFakeOverrideMembers(kClass: KClassImpl<*>): FakeOverrideMemb
             val overriddenStorage = notSubstitutedMember.overriddenStorage.copy(
                 instanceReceiverParameter = if (notSubstitutedMember.isStatic) null else thisReceiver,
                 typeSubstitutor = notSubstitutedMember.overriddenStorage.typeSubstitutor.combinedWith(substitutor),
-                isFakeOverride = true,
+                // Preserve original container
+                originalContainerIfFakeOverride = notSubstitutedMember.overriddenStorage.originalContainerIfFakeOverride
+                    ?: notSubstitutedMember.container,
             )
             val member = notSubstitutedMember.shallowCopy(overriddenStorage)
             val kotlinSignature = member.toEquatableCallableSignature(EqualityMode.KotlinSignature)
