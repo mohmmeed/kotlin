@@ -151,15 +151,29 @@ internal fun computeFakeOverrideMembers(kClass: KClassImpl<*>): FakeOverrideMemb
                 originalContainerIfFakeOverride = notSubstitutedMember.overriddenStorage.originalContainerIfFakeOverride
                     ?: notSubstitutedMember.container,
             )
-            val member = notSubstitutedMember.shallowCopy(notSubstitutedMember.container, overriddenStorage)
+            val member = notSubstitutedMember.shallowCopy(
+                // We don't replace the container just yet.
+                // Unfortunately, DescriptorKType builds its classifier purely by descriptors without propagating containers.
+                // Even if a member already has an overridden container,
+                // some deduced DescriptorKType will have the wrong classifier inside with not-yet-substituted container,
+                // which breaks .equals. It's important to not-yet-substitute the container just yet,
+                // to keep containers and descriptors in consensus state.
+                // Once EquatableCallableSignature is created, we can safely substitute the container.
+                // Once we get rid of descriptors, it should be safe to substitute the container here straight away.
+                notSubstitutedMember.container,
+                overriddenStorage
+            )
             val kotlinSignature = member.toEquatableCallableSignature(EqualityMode.KotlinSignature)
             if (declaredKotlinMembers.contains(kotlinSignature)) continue
-            // Inherited signatures are always compared by JvmSignatures. Even for kotlin classes.
-            javaSignaturesMap.mergeWith(kotlinSignature.withEqualityMode(EqualityMode.JavaSignature), member) { a, b ->
+            // Inherited signatures are always compared by the JvmSignatures. Even for kotlin classes.
+            javaSignaturesMap.mergeWith(
+                kotlinSignature.withEqualityMode(EqualityMode.JavaSignature),
+                member.shallowCopy(kClass, overriddenStorage) // And now we replace the container
+            ) { a, b ->
                 val c = minOf(a, b, CovariantOverrideComparator)
                 when (a is KFunction<*> && b is KFunction<*>) {
                     true -> c.shallowCopy(
-                        c.container,
+                        kClass,
                         c.overriddenStorage.copy(
                             forceIsOperator = a.isOperator || b.isOperator,
                             forceIsInfix = a.isInfix || b.isInfix,
