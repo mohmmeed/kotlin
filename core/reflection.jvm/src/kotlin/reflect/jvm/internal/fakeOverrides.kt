@@ -45,24 +45,13 @@ internal fun getAllMembers(kClass: KClassImpl<*>): Collection<DescriptorKCallabl
     val kotlinDeclaredPrivates: MutableMembersKotlinSignatureMap = HashMap()
     // Populating the 'members' list with things which are not inherited but appear in the 'members' list
     for (declaredMember in kClass.declaredDescriptorKCallableMembers) {
-        when {
-            // static members are not inherited,
-            // but the immediate statics in interfaces must appear in the 'members' list
-            declaredMember.isStaticMethodInInterface(kClass) -> {
-                check(!isKotlin) { "Kotlin doesn't have statics. '${declaredMember.name}' appears to be declared static member in '${kClass.simpleName}'" }
+        if (isNonTransitiveMember(kClass, declaredMember)) {
+            if (isKotlin) {
+                val signature = declaredMember.toEquatableCallableSignature(EqualityMode.KotlinSignature)
+                kotlinDeclaredPrivates[signature] = declaredMember
+            } else {
                 val signature = declaredMember.toEquatableCallableSignature(EqualityMode.JavaSignature)
                 membersMutable[signature] = declaredMember
-            }
-
-            // private members are not inherited, but immediate private members must appear in the 'members' list
-            declaredMember.visibility == KVisibility.PRIVATE -> {
-                if (isKotlin) {
-                    val signature = declaredMember.toEquatableCallableSignature(EqualityMode.KotlinSignature)
-                    kotlinDeclaredPrivates[signature] = declaredMember
-                } else {
-                    val signature = declaredMember.toEquatableCallableSignature(EqualityMode.JavaSignature)
-                    membersMutable[signature] = declaredMember
-                }
             }
         }
     }
@@ -123,7 +112,10 @@ internal data class FakeOverrideMembers(
 private fun DescriptorKCallable<*>.isStaticMethodInInterface(kClass: KClassImpl<*>): Boolean =
     isStatic && kClass.classKind == ClassKind.INTERFACE && !isJavaField
 
-private fun skipDeclaredMember(kClass: KClassImpl<*>, member: DescriptorKCallable<*>): Boolean =
+/**
+ * Non-transitive members don't inherit transitively but appear in the 'members' list of the immediate KClass
+ */
+private fun isNonTransitiveMember(kClass: KClassImpl<*>, member: DescriptorKCallable<*>): Boolean =
     member.visibility == KVisibility.PRIVATE ||
             // static methods (but not fields) in interfaces are never inherited (neither in Java nor in Kotlin)
             member.isStaticMethodInInterface(kClass)
@@ -137,7 +129,7 @@ internal fun computeFakeOverrideMembers(kClass: KClassImpl<*>): FakeOverrideMemb
     val declaredKotlinMembers: MutableMembersKotlinSignatureMap = HashMap()
     if (isKotlin) {
         for (member in kClass.declaredDescriptorKCallableMembers) {
-            if (skipDeclaredMember(kClass, member)) continue
+            if (isNonTransitiveMember(kClass, member)) continue // Skip non-transitive member
             declaredKotlinMembers[member.toEquatableCallableSignature(EqualityMode.KotlinSignature)] = member
         }
     }
@@ -185,7 +177,7 @@ internal fun computeFakeOverrideMembers(kClass: KClassImpl<*>): FakeOverrideMemb
     }
     if (!isKotlin) {
         for (member in kClass.declaredDescriptorKCallableMembers) {
-            if (skipDeclaredMember(kClass, member)) continue
+            if (isNonTransitiveMember(kClass, member)) continue // Skip non-transitive member
             containsInheritedStatics = containsInheritedStatics || member.isStatic
             containsPackagePrivate = containsPackagePrivate || member.isPackagePrivate
             javaSignaturesMap[member.toEquatableCallableSignature(EqualityMode.JavaSignature)] = member
