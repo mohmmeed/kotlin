@@ -217,7 +217,7 @@ class CoroutineTransformerMethodVisitor(
                     if (argType == CONTINUATION_ASM_TYPE) break
                     cursor = cursor?.findPreviousOrNull { it.isMeaningful }
                 }
-                if (cursor != null) {
+                if (cursor?.opcode == Opcodes.ALOAD) {
                     val continuationLoad = cursor
                     cursor = cursor.previous
                     instructions.remove(continuationLoad)
