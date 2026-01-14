@@ -48,8 +48,8 @@
 /.space/ "Kotlin Build Infrastructure"
 
 # AI
-/.ai/ "Kotlin" "Kotlin Analysis API"
-/.claude/ "Kotlin" "Kotlin Analysis API"
+/.ai/ "Kotlin" "Kotlin Analysis API" "Kotlin Build Infrastructure"
+/.claude/ "Kotlin" "Kotlin Analysis API" "Kotlin Build Infrastructure"
 
 /analysis/ "Kotlin Analysis API"
 /analysis/analysis-api-fir/gen/ "Kotlin Frontend"
