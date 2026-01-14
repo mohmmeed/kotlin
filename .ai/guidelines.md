@@ -64,7 +64,7 @@ Key points (not exhaustive):
 ## Area-Specific Guidelines
 
 WHEN working with compiler internals (FIR, IR, backends):
-→ READ .ai/compiler.md
+→ READ compiler/AGENTS.md
 
 WHEN writing or modifying tests:
 → READ .ai/testing.md
