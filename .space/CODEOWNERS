@@ -47,6 +47,10 @@
 
 /.space/ "Kotlin Build Infrastructure"
 
+# AI
+/.ai/ "Kotlin" "Kotlin Analysis API"
+/.claude/ "Kotlin" "Kotlin Analysis API"
+
 /analysis/ "Kotlin Analysis API"
 /analysis/analysis-api-fir/gen/ "Kotlin Frontend"
 
@@ -471,6 +475,8 @@
 /intellij.yaml "Kotlin Build Infrastructure"
 /ReadMe.md "Kotlin Build Infrastructure"
 /SECURITY.md "Kotlin Build Infrastructure"
+/CLAUDE.md "Kotlin Build Infrastructure"
+/AGENTS.md "Kotlin Build Infrastructure"
 
 # Build files
 **.gradle.kts "Kotlin Build Infrastructure"
