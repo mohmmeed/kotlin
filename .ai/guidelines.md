@@ -23,9 +23,11 @@ Note: The IntelliJ Kotlin plugin is in a separate repository (JetBrains/intellij
 
 ## Running Individual Tests
 
+Use `-q` (quiet) flag to reduce output noise and save tokens:
+
 ```bash
 # Run a specific test class
-./gradlew :compiler:test --tests "org.jetbrains.kotlin.codegen.BlackBoxCodegenTestGenerated"
+./gradlew :compiler:test --tests "org.jetbrains.kotlin.codegen.BlackBoxCodegenTestGenerated" -q
 
 # Run a specific test method
 ./gradlew :compiler:test --tests "org.jetbrains.kotlin.codegen.BlackBoxCodegenTestGenerated.testSomeTest"
