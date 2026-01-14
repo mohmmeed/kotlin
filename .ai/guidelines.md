@@ -63,6 +63,10 @@ Key points (not exhaustive):
 
 ## Area-Specific Guidelines
 
+To add new area-specific guidelines, create two files in the module directory:
+1. `AGENTS.md` — the actual documentation content
+2. `CLAUDE.md` — contains only `@AGENTS.md` (for tool compatibility)
+
 WHEN working with compiler internals (FIR, IR, backends):
 → READ compiler/AGENTS.md
 
