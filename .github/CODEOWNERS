@@ -16,6 +16,9 @@
 
 /.space/ @JetBrains/kotlin-build-infrastructure
 
+/.ai/ @JetBrains/kotlin @JetBrains/kotlin-analysis-api @JetBrains/kotlin-build-infrastructure
+/.claude/ @JetBrains/kotlin @JetBrains/kotlin-analysis-api @JetBrains/kotlin-build-infrastructure
+
 /analysis/ @JetBrains/kotlin-analysis-api
 /analysis/analysis-api-fir/gen/ @JetBrains/kotlin-frontend
 
@@ -429,6 +432,8 @@
 /intellij.yaml @JetBrains/kotlin-build-infrastructure
 /ReadMe.md @JetBrains/kotlin-build-infrastructure
 /SECURITY.md @JetBrains/kotlin-build-infrastructure
+/CLAUDE.md @JetBrains/kotlin-build-infrastructure
+/AGENTS.md @JetBrains/kotlin-build-infrastructure
 
 **.gradle.kts @JetBrains/kotlin-build-infrastructure
 **.gradle @JetBrains/kotlin-build-infrastructure
