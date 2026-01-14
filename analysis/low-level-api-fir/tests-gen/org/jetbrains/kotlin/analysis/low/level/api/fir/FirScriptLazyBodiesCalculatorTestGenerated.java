@@ -63,6 +63,12 @@ public class FirScriptLazyBodiesCalculatorTestGenerated extends AbstractFirScrip
       runTest("compiler/fir/raw-fir/psi2fir/testData/rawBuilder/declarations/scriptStatementLevelDestructuringWithAnnotationAsLastStatement.kts");
     }
 
+    @Test
+    @TestMetadata("simpleRepl.repl.kts")
+    public void testSimpleRepl_repl() {
+      runTest("compiler/fir/raw-fir/psi2fir/testData/rawBuilder/declarations/simpleRepl.repl.kts");
+    }
+
     @Nested
     @TestMetadata("compiler/fir/raw-fir/psi2fir/testData/rawBuilder/declarations/contracts")
     @TestDataPath("$PROJECT_ROOT")

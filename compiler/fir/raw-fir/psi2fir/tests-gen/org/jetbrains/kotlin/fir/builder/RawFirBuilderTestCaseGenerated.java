@@ -461,6 +461,11 @@ public class RawFirBuilderTestCaseGenerated extends AbstractRawFirBuilderTestCas
       runTest("compiler/fir/raw-fir/psi2fir/testData/rawBuilder/declarations/simpleFun.kt");
     }
 
+    @TestMetadata("simpleRepl.repl.kts")
+    public void testSimpleRepl_repl() {
+      runTest("compiler/fir/raw-fir/psi2fir/testData/rawBuilder/declarations/simpleRepl.repl.kts");
+    }
+
     @TestMetadata("simpleTypeAlias.kt")
     public void testSimpleTypeAlias() {
       runTest("compiler/fir/raw-fir/psi2fir/testData/rawBuilder/declarations/simpleTypeAlias.kt");
