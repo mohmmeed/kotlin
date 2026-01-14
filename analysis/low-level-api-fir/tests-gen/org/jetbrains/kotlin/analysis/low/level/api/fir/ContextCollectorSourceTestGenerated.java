@@ -1282,6 +1282,12 @@ public class ContextCollectorSourceTestGenerated extends AbstractContextCollecto
     }
 
     @Test
+    @TestMetadata("test.kt")
+    public void testTest() {
+      runTest("analysis/low-level-api-fir/testData/contextCollector/smartCasts/test.kt");
+    }
+
+    @Test
     @TestMetadata("when.kt")
     public void testWhen() {
       runTest("analysis/low-level-api-fir/testData/contextCollector/smartCasts/when.kt");

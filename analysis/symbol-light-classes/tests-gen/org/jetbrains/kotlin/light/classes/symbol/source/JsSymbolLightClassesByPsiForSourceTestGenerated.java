@@ -457,6 +457,16 @@ public class JsSymbolLightClassesByPsiForSourceTestGenerated extends AbstractJsS
   }
 
   @Nested
+  @TestMetadata("compiler/testData/asJava/lightClasses/lightClassByPsi/collections")
+  @TestDataPath("$PROJECT_ROOT")
+  public class Collections {
+    @Test
+    public void testAllFilesPresentInCollections() {
+      KtTestUtil.assertAllTestsPresentByMetadataWithExcluded(this.getClass(), new File("compiler/testData/asJava/lightClasses/lightClassByPsi/collections"), Pattern.compile("^([^.]+)\\.kt$"), null, true);
+    }
+  }
+
+  @Nested
   @TestMetadata("compiler/testData/asJava/lightClasses/lightClassByPsi/facades")
   @TestDataPath("$PROJECT_ROOT")
   public class Facades {
