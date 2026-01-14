@@ -60,6 +60,8 @@
 
 /build-common/ "Kotlin Build Tools"
 
+/compiler/AGENTS.md "Kotlin Compiler"
+/compiler/CLAUDE.md "Kotlin Compiler"
 /compiler/arguments.common/ "Kotlin Frontend" "Kotlin Build Tools"
 /compiler/arguments/ "Kotlin Frontend" "Kotlin Build Tools"
 /compiler/arguments/src/org/jetbrains/kotlin/arguments/description/WasmCompilerArguments.kt "Kotlin Wasm"
