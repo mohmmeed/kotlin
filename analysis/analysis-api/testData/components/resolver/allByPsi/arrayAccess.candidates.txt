@@ -372,7 +372,7 @@ KtProperty(54,81): 'val implicitIndex = list[0]'
   NO_CANDIDATES
 
 KtArrayAccessExpression(74,81): 'list[0]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         0 -> (KaVariableSignature:
@@ -489,7 +489,7 @@ KtNameReferenceExpression(106,110): 'list'
     isInBestCandidates = true
 
 KtCallExpression(111,129): 'get(implicitIndex)'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         implicitIndex -> (KaVariableSignature:
@@ -586,116 +586,115 @@ KtNameReferenceExpression(115,128): 'implicitIndex'
 
 KtBinaryExpression(134,172): '(@Suppress("SOME_ERROR") list[1]) += 2'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundArrayAccessCall:
-      compoundOperation = KaCompoundAssignOperation:
-        kind = PLUS_ASSIGN
-        operand = 2
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {
-            list[1] -> (KaVariableSignature:
-              name = other
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = other: kotlin.Int
-              contextParameters = []
-              callableId = null)
-          }
-          contextArguments = []
-          dispatchReceiver = KaExplicitReceiverValue:
-            expression = list[1]
-            isSafeNavigation = false
-            type = kotlin.Int
-          extensionReceiver = null
-          signature = KaFunctionSignature:
-            receiverType = null
-            returnType = kotlin.Int
-            symbol = kotlin/Int.plus(<dispatch receiver>: kotlin.Int, other: kotlin.Int): kotlin.Int
-            valueParameters = [
-              KaVariableSignature:
-                name = other
-                receiverType = null
-                returnType = kotlin.Int
-                symbol = other: kotlin.Int
-                contextParameters = []
-                callableId = null
-            ]
-            contextParameters = []
-            callableId = kotlin/Int.plus
-          typeArgumentsMapping = {}
-      getterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          1 -> (KaVariableSignature:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        1 -> (KaVariableSignature:
+          name = index
+          receiverType = null
+          returnType = kotlin.Int
+          symbol = index: kotlin.Int
+          contextParameters = []
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
+        valueParameters = [
+          KaVariableSignature:
             name = index
             receiverType = null
             returnType = kotlin.Int
             symbol = index: kotlin.Int
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.get
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        1 -> (KaVariableSignature:
+          name = element
           receiverType = null
           returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null
-          ]
+          symbol = element: E
           contextParameters = []
-          callableId = kotlin/collections/MutableList.get
-        typeArgumentsMapping = {}
-      indexArguments = [
-        1
-      ]
-      setterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          1 -> (KaVariableSignature:
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
+        valueParameters = [
+          KaVariableSignature:
+            name = index
+            receiverType = null
+            returnType = kotlin.Int
+            symbol = index: kotlin.Int
+            contextParameters = []
+            callableId = null,
+          KaVariableSignature:
             name = element
             receiverType = null
             returnType = kotlin.Int
             symbol = element: E
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.set
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        list[1] -> (KaVariableSignature:
+          name = other
           receiverType = null
           returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null,
-            KaVariableSignature:
-              name = element
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = element: E
-              contextParameters = []
-              callableId = null
-          ]
+          symbol = other: kotlin.Int
           contextParameters = []
-          callableId = kotlin/collections/MutableList.set
-        typeArgumentsMapping = {}
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list[1]
+        isSafeNavigation = false
+        type = kotlin.Int
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/Int.plus(<dispatch receiver>: kotlin.Int, other: kotlin.Int): kotlin.Int
+        valueParameters = [
+          KaVariableSignature:
+            name = other
+            receiverType = null
+            returnType = kotlin.Int
+            symbol = other: kotlin.Int
+            contextParameters = []
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/Int.plus
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtParenthesizedExpression(134,167): '(@Suppress("SOME_ERROR") list[1])'
@@ -705,7 +704,7 @@ KtAnnotatedExpression(135,166): '@Suppress("SOME_ERROR") list[1]'
   NO_CANDIDATES
 
 KtAnnotationEntry(135,158): '@Suppress("SOME_ERROR")'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaAnnotationCall:
       argumentMapping = {
         "SOME_ERROR" -> (KaVariableSignature:
@@ -792,7 +791,7 @@ KtLiteralStringTemplateEntry(146,156): 'SOME_ERROR'
   NO_CANDIDATES
 
 KtArrayAccessExpression(159,166): 'list[1]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -853,116 +852,115 @@ KtConstantExpression(164,165): '1'
 
 KtOperationReferenceExpression(168,170): '+='
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundArrayAccessCall:
-      compoundOperation = KaCompoundAssignOperation:
-        kind = PLUS_ASSIGN
-        operand = 2
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {
-            list[1] -> (KaVariableSignature:
-              name = other
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = other: kotlin.Int
-              contextParameters = []
-              callableId = null)
-          }
-          contextArguments = []
-          dispatchReceiver = KaExplicitReceiverValue:
-            expression = list[1]
-            isSafeNavigation = false
-            type = kotlin.Int
-          extensionReceiver = null
-          signature = KaFunctionSignature:
-            receiverType = null
-            returnType = kotlin.Int
-            symbol = kotlin/Int.plus(<dispatch receiver>: kotlin.Int, other: kotlin.Int): kotlin.Int
-            valueParameters = [
-              KaVariableSignature:
-                name = other
-                receiverType = null
-                returnType = kotlin.Int
-                symbol = other: kotlin.Int
-                contextParameters = []
-                callableId = null
-            ]
-            contextParameters = []
-            callableId = kotlin/Int.plus
-          typeArgumentsMapping = {}
-      getterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          1 -> (KaVariableSignature:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        1 -> (KaVariableSignature:
+          name = index
+          receiverType = null
+          returnType = kotlin.Int
+          symbol = index: kotlin.Int
+          contextParameters = []
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
+        valueParameters = [
+          KaVariableSignature:
             name = index
             receiverType = null
             returnType = kotlin.Int
             symbol = index: kotlin.Int
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.get
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        1 -> (KaVariableSignature:
+          name = element
           receiverType = null
           returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null
-          ]
+          symbol = element: E
           contextParameters = []
-          callableId = kotlin/collections/MutableList.get
-        typeArgumentsMapping = {}
-      indexArguments = [
-        1
-      ]
-      setterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          1 -> (KaVariableSignature:
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
+        valueParameters = [
+          KaVariableSignature:
+            name = index
+            receiverType = null
+            returnType = kotlin.Int
+            symbol = index: kotlin.Int
+            contextParameters = []
+            callableId = null,
+          KaVariableSignature:
             name = element
             receiverType = null
             returnType = kotlin.Int
             symbol = element: E
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.set
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        list[1] -> (KaVariableSignature:
+          name = other
           receiverType = null
           returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null,
-            KaVariableSignature:
-              name = element
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = element: E
-              contextParameters = []
-              callableId = null
-          ]
+          symbol = other: kotlin.Int
           contextParameters = []
-          callableId = kotlin/collections/MutableList.set
-        typeArgumentsMapping = {}
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list[1]
+        isSafeNavigation = false
+        type = kotlin.Int
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/Int.plus(<dispatch receiver>: kotlin.Int, other: kotlin.Int): kotlin.Int
+        valueParameters = [
+          KaVariableSignature:
+            name = other
+            receiverType = null
+            returnType = kotlin.Int
+            symbol = other: kotlin.Int
+            contextParameters = []
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/Int.plus
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtConstantExpression(171,172): '2'
@@ -970,123 +968,122 @@ KtConstantExpression(171,172): '2'
 
 KtBinaryExpression(177,191): '(list[2]) += 3'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundArrayAccessCall:
-      compoundOperation = KaCompoundAssignOperation:
-        kind = PLUS_ASSIGN
-        operand = 3
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {
-            list[2] -> (KaVariableSignature:
-              name = other
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = other: kotlin.Int
-              contextParameters = []
-              callableId = null)
-          }
-          contextArguments = []
-          dispatchReceiver = KaExplicitReceiverValue:
-            expression = list[2]
-            isSafeNavigation = false
-            type = kotlin.Int
-          extensionReceiver = null
-          signature = KaFunctionSignature:
-            receiverType = null
-            returnType = kotlin.Int
-            symbol = kotlin/Int.plus(<dispatch receiver>: kotlin.Int, other: kotlin.Int): kotlin.Int
-            valueParameters = [
-              KaVariableSignature:
-                name = other
-                receiverType = null
-                returnType = kotlin.Int
-                symbol = other: kotlin.Int
-                contextParameters = []
-                callableId = null
-            ]
-            contextParameters = []
-            callableId = kotlin/Int.plus
-          typeArgumentsMapping = {}
-      getterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          2 -> (KaVariableSignature:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        2 -> (KaVariableSignature:
+          name = index
+          receiverType = null
+          returnType = kotlin.Int
+          symbol = index: kotlin.Int
+          contextParameters = []
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
+        valueParameters = [
+          KaVariableSignature:
             name = index
             receiverType = null
             returnType = kotlin.Int
             symbol = index: kotlin.Int
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.get
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        2 -> (KaVariableSignature:
+          name = element
           receiverType = null
           returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null
-          ]
+          symbol = element: E
           contextParameters = []
-          callableId = kotlin/collections/MutableList.get
-        typeArgumentsMapping = {}
-      indexArguments = [
-        2
-      ]
-      setterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          2 -> (KaVariableSignature:
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
+        valueParameters = [
+          KaVariableSignature:
+            name = index
+            receiverType = null
+            returnType = kotlin.Int
+            symbol = index: kotlin.Int
+            contextParameters = []
+            callableId = null,
+          KaVariableSignature:
             name = element
             receiverType = null
             returnType = kotlin.Int
             symbol = element: E
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.set
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        list[2] -> (KaVariableSignature:
+          name = other
           receiverType = null
           returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null,
-            KaVariableSignature:
-              name = element
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = element: E
-              contextParameters = []
-              callableId = null
-          ]
+          symbol = other: kotlin.Int
           contextParameters = []
-          callableId = kotlin/collections/MutableList.set
-        typeArgumentsMapping = {}
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list[2]
+        isSafeNavigation = false
+        type = kotlin.Int
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/Int.plus(<dispatch receiver>: kotlin.Int, other: kotlin.Int): kotlin.Int
+        valueParameters = [
+          KaVariableSignature:
+            name = other
+            receiverType = null
+            returnType = kotlin.Int
+            symbol = other: kotlin.Int
+            contextParameters = []
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/Int.plus
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtParenthesizedExpression(177,186): '(list[2])'
   NO_CANDIDATES
 
 KtArrayAccessExpression(178,185): 'list[2]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         2 -> (KaVariableSignature:
@@ -1147,116 +1144,115 @@ KtConstantExpression(183,184): '2'
 
 KtOperationReferenceExpression(187,189): '+='
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundArrayAccessCall:
-      compoundOperation = KaCompoundAssignOperation:
-        kind = PLUS_ASSIGN
-        operand = 3
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {
-            list[2] -> (KaVariableSignature:
-              name = other
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = other: kotlin.Int
-              contextParameters = []
-              callableId = null)
-          }
-          contextArguments = []
-          dispatchReceiver = KaExplicitReceiverValue:
-            expression = list[2]
-            isSafeNavigation = false
-            type = kotlin.Int
-          extensionReceiver = null
-          signature = KaFunctionSignature:
-            receiverType = null
-            returnType = kotlin.Int
-            symbol = kotlin/Int.plus(<dispatch receiver>: kotlin.Int, other: kotlin.Int): kotlin.Int
-            valueParameters = [
-              KaVariableSignature:
-                name = other
-                receiverType = null
-                returnType = kotlin.Int
-                symbol = other: kotlin.Int
-                contextParameters = []
-                callableId = null
-            ]
-            contextParameters = []
-            callableId = kotlin/Int.plus
-          typeArgumentsMapping = {}
-      getterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          2 -> (KaVariableSignature:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        2 -> (KaVariableSignature:
+          name = index
+          receiverType = null
+          returnType = kotlin.Int
+          symbol = index: kotlin.Int
+          contextParameters = []
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
+        valueParameters = [
+          KaVariableSignature:
             name = index
             receiverType = null
             returnType = kotlin.Int
             symbol = index: kotlin.Int
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.get
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        2 -> (KaVariableSignature:
+          name = element
           receiverType = null
           returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null
-          ]
+          symbol = element: E
           contextParameters = []
-          callableId = kotlin/collections/MutableList.get
-        typeArgumentsMapping = {}
-      indexArguments = [
-        2
-      ]
-      setterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          2 -> (KaVariableSignature:
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
+        valueParameters = [
+          KaVariableSignature:
+            name = index
+            receiverType = null
+            returnType = kotlin.Int
+            symbol = index: kotlin.Int
+            contextParameters = []
+            callableId = null,
+          KaVariableSignature:
             name = element
             receiverType = null
             returnType = kotlin.Int
             symbol = element: E
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.set
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        list[2] -> (KaVariableSignature:
+          name = other
           receiverType = null
           returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null,
-            KaVariableSignature:
-              name = element
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = element: E
-              contextParameters = []
-              callableId = null
-          ]
+          symbol = other: kotlin.Int
           contextParameters = []
-          callableId = kotlin/collections/MutableList.set
-        typeArgumentsMapping = {}
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list[2]
+        isSafeNavigation = false
+        type = kotlin.Int
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/Int.plus(<dispatch receiver>: kotlin.Int, other: kotlin.Int): kotlin.Int
+        valueParameters = [
+          KaVariableSignature:
+            name = other
+            receiverType = null
+            returnType = kotlin.Int
+            symbol = other: kotlin.Int
+            contextParameters = []
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/Int.plus
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtConstantExpression(190,191): '3'
@@ -1311,7 +1307,7 @@ KtBlockExpression(235,279): '{'
   NO_CANDIDATES
 
 KtCallExpression(241,261): 'foo(--list[i], list)'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         --list[i] -> (KaVariableSignature:
@@ -1412,202 +1408,200 @@ KtValueArgument(245,254): '--list[i]'
 
 KtPrefixExpression(245,254): '--list[i]'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundArrayAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = DEC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = KaExplicitReceiverValue:
-            expression = list[i]
-            isSafeNavigation = false
-            type = kotlin.Int
-          extensionReceiver = null
-          signature = KaFunctionSignature:
-            receiverType = null
-            returnType = kotlin.Int
-            symbol = kotlin/Int.dec(<dispatch receiver>: kotlin.Int): kotlin.Int
-            valueParameters = []
-            contextParameters = []
-            callableId = kotlin/Int.dec
-          typeArgumentsMapping = {}
-        precedence = PREFIX
-      getterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          i -> (KaVariableSignature:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        i -> (KaVariableSignature:
+          name = index
+          receiverType = null
+          returnType = kotlin.Int
+          symbol = index: kotlin.Int
+          contextParameters = []
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
+        valueParameters = [
+          KaVariableSignature:
             name = index
             receiverType = null
             returnType = kotlin.Int
             symbol = index: kotlin.Int
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.get
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        i -> (KaVariableSignature:
+          name = element
           receiverType = null
           returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null
-          ]
+          symbol = element: E
           contextParameters = []
-          callableId = kotlin/collections/MutableList.get
-        typeArgumentsMapping = {}
-      indexArguments = [
-        i
-      ]
-      setterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          i -> (KaVariableSignature:
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
+        valueParameters = [
+          KaVariableSignature:
+            name = index
+            receiverType = null
+            returnType = kotlin.Int
+            symbol = index: kotlin.Int
+            contextParameters = []
+            callableId = null,
+          KaVariableSignature:
             name = element
             receiverType = null
             returnType = kotlin.Int
             symbol = element: E
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
-          receiverType = null
-          returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null,
-            KaVariableSignature:
-              name = element
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = element: E
-              contextParameters = []
-              callableId = null
-          ]
-          contextParameters = []
-          callableId = kotlin/collections/MutableList.set
-        typeArgumentsMapping = {}
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.set
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list[i]
+        isSafeNavigation = false
+        type = kotlin.Int
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/Int.dec(<dispatch receiver>: kotlin.Int): kotlin.Int
+        valueParameters = []
+        contextParameters = []
+        callableId = kotlin/Int.dec
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtOperationReferenceExpression(245,247): '--'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundArrayAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = DEC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = KaExplicitReceiverValue:
-            expression = list[i]
-            isSafeNavigation = false
-            type = kotlin.Int
-          extensionReceiver = null
-          signature = KaFunctionSignature:
-            receiverType = null
-            returnType = kotlin.Int
-            symbol = kotlin/Int.dec(<dispatch receiver>: kotlin.Int): kotlin.Int
-            valueParameters = []
-            contextParameters = []
-            callableId = kotlin/Int.dec
-          typeArgumentsMapping = {}
-        precedence = PREFIX
-      getterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          i -> (KaVariableSignature:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        i -> (KaVariableSignature:
+          name = index
+          receiverType = null
+          returnType = kotlin.Int
+          symbol = index: kotlin.Int
+          contextParameters = []
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
+        valueParameters = [
+          KaVariableSignature:
             name = index
             receiverType = null
             returnType = kotlin.Int
             symbol = index: kotlin.Int
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.get
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        i -> (KaVariableSignature:
+          name = element
           receiverType = null
           returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null
-          ]
+          symbol = element: E
           contextParameters = []
-          callableId = kotlin/collections/MutableList.get
-        typeArgumentsMapping = {}
-      indexArguments = [
-        i
-      ]
-      setterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          i -> (KaVariableSignature:
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
+        valueParameters = [
+          KaVariableSignature:
+            name = index
+            receiverType = null
+            returnType = kotlin.Int
+            symbol = index: kotlin.Int
+            contextParameters = []
+            callableId = null,
+          KaVariableSignature:
             name = element
             receiverType = null
             returnType = kotlin.Int
             symbol = element: E
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
-          receiverType = null
-          returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null,
-            KaVariableSignature:
-              name = element
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = element: E
-              contextParameters = []
-              callableId = null
-          ]
-          contextParameters = []
-          callableId = kotlin/collections/MutableList.set
-        typeArgumentsMapping = {}
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.set
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list[i]
+        isSafeNavigation = false
+        type = kotlin.Int
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/Int.dec(<dispatch receiver>: kotlin.Int): kotlin.Int
+        valueParameters = []
+        contextParameters = []
+        callableId = kotlin/Int.dec
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtArrayAccessExpression(247,254): 'list[i]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         i -> (KaVariableSignature:
@@ -1704,205 +1698,203 @@ KtNameReferenceExpression(256,260): 'list'
 
 KtPrefixExpression(266,277): '++(list[2])'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundArrayAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = INC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = KaExplicitReceiverValue:
-            expression = list[2]
-            isSafeNavigation = false
-            type = kotlin.Int
-          extensionReceiver = null
-          signature = KaFunctionSignature:
-            receiverType = null
-            returnType = kotlin.Int
-            symbol = kotlin/Int.inc(<dispatch receiver>: kotlin.Int): kotlin.Int
-            valueParameters = []
-            contextParameters = []
-            callableId = kotlin/Int.inc
-          typeArgumentsMapping = {}
-        precedence = PREFIX
-      getterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          2 -> (KaVariableSignature:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        2 -> (KaVariableSignature:
+          name = index
+          receiverType = null
+          returnType = kotlin.Int
+          symbol = index: kotlin.Int
+          contextParameters = []
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
+        valueParameters = [
+          KaVariableSignature:
             name = index
             receiverType = null
             returnType = kotlin.Int
             symbol = index: kotlin.Int
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.get
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        2 -> (KaVariableSignature:
+          name = element
           receiverType = null
           returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null
-          ]
+          symbol = element: E
           contextParameters = []
-          callableId = kotlin/collections/MutableList.get
-        typeArgumentsMapping = {}
-      indexArguments = [
-        2
-      ]
-      setterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          2 -> (KaVariableSignature:
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
+        valueParameters = [
+          KaVariableSignature:
+            name = index
+            receiverType = null
+            returnType = kotlin.Int
+            symbol = index: kotlin.Int
+            contextParameters = []
+            callableId = null,
+          KaVariableSignature:
             name = element
             receiverType = null
             returnType = kotlin.Int
             symbol = element: E
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
-          receiverType = null
-          returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null,
-            KaVariableSignature:
-              name = element
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = element: E
-              contextParameters = []
-              callableId = null
-          ]
-          contextParameters = []
-          callableId = kotlin/collections/MutableList.set
-        typeArgumentsMapping = {}
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.set
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list[2]
+        isSafeNavigation = false
+        type = kotlin.Int
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/Int.inc(<dispatch receiver>: kotlin.Int): kotlin.Int
+        valueParameters = []
+        contextParameters = []
+        callableId = kotlin/Int.inc
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtOperationReferenceExpression(266,268): '++'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundArrayAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = INC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = KaExplicitReceiverValue:
-            expression = list[2]
-            isSafeNavigation = false
-            type = kotlin.Int
-          extensionReceiver = null
-          signature = KaFunctionSignature:
-            receiverType = null
-            returnType = kotlin.Int
-            symbol = kotlin/Int.inc(<dispatch receiver>: kotlin.Int): kotlin.Int
-            valueParameters = []
-            contextParameters = []
-            callableId = kotlin/Int.inc
-          typeArgumentsMapping = {}
-        precedence = PREFIX
-      getterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          2 -> (KaVariableSignature:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        2 -> (KaVariableSignature:
+          name = index
+          receiverType = null
+          returnType = kotlin.Int
+          symbol = index: kotlin.Int
+          contextParameters = []
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
+        valueParameters = [
+          KaVariableSignature:
             name = index
             receiverType = null
             returnType = kotlin.Int
             symbol = index: kotlin.Int
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.get
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {
+        2 -> (KaVariableSignature:
+          name = element
           receiverType = null
           returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.get(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null
-          ]
+          symbol = element: E
           contextParameters = []
-          callableId = kotlin/collections/MutableList.get
-        typeArgumentsMapping = {}
-      indexArguments = [
-        2
-      ]
-      setterCall = KaSimpleFunctionCall:
-        argumentMapping = {
-          2 -> (KaVariableSignature:
+          callableId = null)
+      }
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list
+        isSafeNavigation = false
+        type = kotlin.collections.MutableList<kotlin.Int>
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
+        valueParameters = [
+          KaVariableSignature:
+            name = index
+            receiverType = null
+            returnType = kotlin.Int
+            symbol = index: kotlin.Int
+            contextParameters = []
+            callableId = null,
+          KaVariableSignature:
             name = element
             receiverType = null
             returnType = kotlin.Int
             symbol = element: E
             contextParameters = []
-            callableId = null)
-        }
-        contextArguments = []
-        dispatchReceiver = KaExplicitReceiverValue:
-          expression = list
-          isSafeNavigation = false
-          type = kotlin.collections.MutableList<kotlin.Int>
-        extensionReceiver = null
-        signature = KaFunctionSignature:
-          receiverType = null
-          returnType = kotlin.Int
-          symbol = kotlin/collections/MutableList.set(<dispatch receiver>: kotlin.collections.MutableList<E>, index: kotlin.Int, element: E): E
-          valueParameters = [
-            KaVariableSignature:
-              name = index
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = index: kotlin.Int
-              contextParameters = []
-              callableId = null,
-            KaVariableSignature:
-              name = element
-              receiverType = null
-              returnType = kotlin.Int
-              symbol = element: E
-              contextParameters = []
-              callableId = null
-          ]
-          contextParameters = []
-          callableId = kotlin/collections/MutableList.set
-        typeArgumentsMapping = {}
+            callableId = null
+        ]
+        contextParameters = []
+        callableId = kotlin/collections/MutableList.set
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = list[2]
+        isSafeNavigation = false
+        type = kotlin.Int
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = kotlin.Int
+        symbol = kotlin/Int.inc(<dispatch receiver>: kotlin.Int): kotlin.Int
+        valueParameters = []
+        contextParameters = []
+        callableId = kotlin/Int.inc
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtParenthesizedExpression(268,277): '(list[2])'
   NO_CANDIDATES
 
 KtArrayAccessExpression(269,276): 'list[2]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         2 -> (KaVariableSignature:

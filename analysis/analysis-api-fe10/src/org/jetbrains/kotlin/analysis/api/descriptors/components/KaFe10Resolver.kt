@@ -213,11 +213,11 @@ internal class KaFe10Resolver(
         } ?: handleResolveErrors(bindingContext, psi)
     }
 
-    override fun performCallCandidatesCollection(psi: KtElement): List<KaCallCandidateInfo> {
+    override fun performCallCandidatesCollection(psi: KtElement): List<KaCallCandidate> {
         val bindingContext = analysisContext.analyze(psi, AnalysisMode.PARTIAL_WITH_DIAGNOSTICS)
         val resolvedCall = performCallResolution(psi)
         return performCallCandidatesCollection(psi, bindingContext, resolvedCall).ifEmpty {
-            resolvedCall.toKaCallCandidateInfos()
+            resolvedCall.toKaCallCandidates()
         }
     }
 
@@ -225,7 +225,7 @@ internal class KaFe10Resolver(
         psi: KtElement,
         bindingContext: BindingContext,
         resolvedCall: KaCallResolutionAttempt?,
-    ): List<KaCallCandidateInfo> {
+    ): List<KaCallCandidate> {
         val bestCandidateDescriptors =
             resolvedCall?.calls?.filterIsInstance<KaCallableMemberCall<*, *>>()
                 ?.mapNotNullTo(mutableSetOf()) { it.descriptor as? CallableDescriptor }
@@ -240,7 +240,7 @@ internal class KaFe10Resolver(
                     unwrappedPsi.operationToken in OperatorConventions.EQUALS_OPERATIONS)
         ) {
             // TODO: Handle compound assignment
-            handleAsFunctionCall(bindingContext, unwrappedPsi)?.toKaCallCandidateInfos()?.let { return it }
+            handleAsFunctionCall(bindingContext, unwrappedPsi)?.toKaCallCandidates()?.let { return it }
         }
 
         // The regular mechanism doesn't work, so at least the resolved call should be returned
@@ -248,7 +248,7 @@ internal class KaFe10Resolver(
             is KtWhenConditionInRange,
             is KtCollectionLiteralExpression,
             is KtCallableReferenceExpression,
-                -> return resolvedCall?.toKaCallCandidateInfos().orEmpty()
+                -> return resolvedCall?.toKaCallCandidates().orEmpty()
         }
 
         val resolutionScope = unwrappedPsi.getResolutionScope(bindingContext) ?: return emptyList()
@@ -290,11 +290,11 @@ internal class KaFe10Resolver(
                 candidateTrace.bindingContext.diagnostics
             )
 
-            candidateKtCallInfo.toKaCallCandidateInfos(bestCandidateDescriptors)
+            candidateKtCallInfo.toKaCallCandidates(bestCandidateDescriptors)
         }
 
         return if (resolvedCall is KaCall) {
-            resolvedCall.toKaCallCandidateInfos() + candidateInfos.filterNot(KaCallCandidateInfo::isInBestCandidates)
+            resolvedCall.toKaCallCandidates() + candidateInfos.filterNot(KaCallCandidate::isInBestCandidates)
         } else {
             candidateInfos
         }
@@ -307,29 +307,36 @@ internal class KaFe10Resolver(
             else -> null
         }
 
-    private fun KaCallResolutionAttempt?.toKaCallCandidateInfos(): List<KaCallCandidateInfo> = when (this) {
+    private fun KaCallResolutionAttempt?.toKaCallCandidates(): List<KaCallCandidate> = when (this) {
         null -> emptyList()
 
-        is KaCall, is KaSingleCall<*, *>, is KaMultiCall -> listOf(
-            KaBaseApplicableCallCandidateInfo(
-                backingCandidate = this as KaCall,
-                isInBestCandidates = true,
+        is KaSingleCall<*, *> -> listOf(
+            KaBaseApplicableCallCandidate(
+                backingCandidate = this,
+                backingIsInBestCandidates = true,
             )
         )
 
+        is KaMultiCall -> calls.map {
+            KaBaseApplicableCallCandidate(
+                backingCandidate = it,
+                backingIsInBestCandidates = true,
+            )
+        }
+
         is KaCallResolutionError -> candidateCalls.map {
-            KaBaseInapplicableCallCandidateInfo(
-                backingCandidate = it as KaCall,
-                isInBestCandidates = true,
-                diagnostic = diagnostic,
+            KaBaseInapplicableCallCandidate(
+                backingCandidate = it,
+                backingIsInBestCandidates = true,
+                backingDiagnostic = diagnostic,
             )
         }
 
     }
 
-    private fun KaCallResolutionAttempt?.toKaCallCandidateInfos(bestCandidateDescriptors: Set<CallableDescriptor>): List<KaCallCandidateInfo> {
+    private fun KaCallResolutionAttempt?.toKaCallCandidates(bestCandidateDescriptors: Set<CallableDescriptor>): List<KaCallCandidate> {
         // TODO: We should prefer to compare symbols instead of descriptors, but we can't do so while symbols are not cached.
-        fun KaCall.isInBestCandidates(): Boolean {
+        fun KaSingleCall<*, *>.isInBestCandidates(): Boolean {
             val descriptor = this.safeAs<KaCallableMemberCall<*, *>>()?.descriptor as? CallableDescriptor
             return descriptor != null && bestCandidateDescriptors.any {
                 DescriptorEquivalenceForOverrides.areCallableDescriptorsEquivalent(
@@ -342,18 +349,25 @@ internal class KaFe10Resolver(
         }
 
         return when (this) {
-            is KaCall, is KaSingleCall<*, *>, is KaMultiCall -> listOf(
-                KaBaseApplicableCallCandidateInfo(
-                    backingCandidate = this as KaCall,
-                    isInBestCandidates = this.isInBestCandidates(),
+            is KaSingleCall<*, *> -> listOf(
+                KaBaseApplicableCallCandidate(
+                    backingCandidate = this,
+                    backingIsInBestCandidates = this.isInBestCandidates(),
                 ),
             )
 
+            is KaMultiCall -> calls.map {
+                KaBaseApplicableCallCandidate(
+                    backingCandidate = it,
+                    backingIsInBestCandidates = it.isInBestCandidates(),
+                )
+            }
+
             is KaCallResolutionError -> candidateCalls.map {
-                KaBaseInapplicableCallCandidateInfo(
-                    backingCandidate = it as KaCall,
-                    isInBestCandidates = it.isInBestCandidates(),
-                    diagnostic = diagnostic,
+                KaBaseInapplicableCallCandidate(
+                    backingCandidate = it,
+                    backingIsInBestCandidates = it.isInBestCandidates(),
+                    backingDiagnostic = diagnostic,
                 )
             }
 

@@ -11,8 +11,10 @@ import com.intellij.psi.PsiMember
 import org.jetbrains.kotlin.analysis.api.KaImplementationDetail
 import org.jetbrains.kotlin.analysis.api.KaSession
 import org.jetbrains.kotlin.analysis.api.components.KaResolver
+import org.jetbrains.kotlin.analysis.api.impl.base.resolution.KaBaseApplicableCallCandidateInfo
 import org.jetbrains.kotlin.analysis.api.impl.base.resolution.KaBaseErrorCallInfo
 import org.jetbrains.kotlin.analysis.api.impl.base.resolution.KaBaseExplicitReceiverValue
+import org.jetbrains.kotlin.analysis.api.impl.base.resolution.KaBaseInapplicableCallCandidateInfo
 import org.jetbrains.kotlin.analysis.api.impl.base.resolution.KaBaseSuccessCallInfo
 import org.jetbrains.kotlin.analysis.api.lifetime.withValidityAssertion
 import org.jetbrains.kotlin.analysis.api.resolution.*
@@ -153,14 +155,14 @@ abstract class KaBaseResolver<T : KaSession> : KaBaseSessionComponent<T>(), KaRe
         // All implementations are the same, just the top of the hierarchy is different
         get() = this as KaCall
 
-    private fun KtElement.collectCallCandidatesImpl(): List<KaCallCandidateInfo> {
+    private fun KtElement.collectCallCandidatesImpl(): List<KaCallCandidate> {
         val unwrappedElement = unwrapResolvableCall()
         return unwrappedElement?.let(::performCallCandidatesCollection).orEmpty()
     }
 
-    protected abstract fun performCallCandidatesCollection(psi: KtElement): List<KaCallCandidateInfo>
+    protected abstract fun performCallCandidatesCollection(psi: KtElement): List<KaCallCandidate>
 
-    final override fun KtResolvableCall.collectCallCandidates(): List<KaCallCandidateInfo> = withValidityAssertion {
+    final override fun KtResolvableCall.collectCallCandidates(): List<KaCallCandidate> = withValidityAssertion {
         if (this is KtElement) {
             checkValidity()
             collectCallCandidatesImpl()
@@ -170,7 +172,12 @@ abstract class KaBaseResolver<T : KaSession> : KaBaseSessionComponent<T>(), KaRe
     }
 
     final override fun KtElement.resolveToCallCandidates(): List<KaCallCandidateInfo> = withPsiValidityAssertion {
-        collectCallCandidatesImpl()
+        collectCallCandidatesImpl().map { it.toCallCandidateInfo() }
+    }
+
+    private fun KaCallCandidate.toCallCandidateInfo(): KaCallCandidateInfo = when (this) {
+        is KaApplicableCallCandidate -> KaBaseApplicableCallCandidateInfo(candidate as KaCall, isInBestCandidates)
+        is KaInapplicableCallCandidate -> KaBaseInapplicableCallCandidateInfo(candidate as KaCall, isInBestCandidates, diagnostic)
     }
 
     // TODO: remove this workaround after KT-68499

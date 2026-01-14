@@ -705,7 +705,7 @@ public interface KaResolver : KaSessionComponent {
      */
     @KaExperimentalApi
     @OptIn(KtExperimentalApi::class)
-    public fun KtResolvableCall.collectCallCandidates(): List<KaCallCandidateInfo>
+    public fun KtResolvableCall.collectCallCandidates(): List<KaCallCandidate>
 
     /**
      * Resolves the given [KtReference] to symbols.
@@ -1663,7 +1663,7 @@ public fun KtWhenConditionInRange.resolveCall(): KaFunctionCall<KaNamedFunctionS
 @OptIn(KtExperimentalApi::class)
 @KaContextParameterApi
 context(session: KaSession)
-public fun KtResolvableCall.collectCallCandidates(): List<KaCallCandidateInfo> {
+public fun KtResolvableCall.collectCallCandidates(): List<KaCallCandidate> {
     return with(session) {
         collectCallCandidates()
     }

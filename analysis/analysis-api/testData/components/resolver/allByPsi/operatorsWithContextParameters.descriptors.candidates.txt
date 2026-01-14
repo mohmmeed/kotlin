@@ -686,7 +686,7 @@ KtProperty(797,808): 'var a = A()'
   NO_CANDIDATES
 
 KtCallExpression(805,808): 'A()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {}
       contextArguments = []
@@ -726,7 +726,7 @@ KtProperty(813,838): 'var b = SimpleOperators()'
   NO_CANDIDATES
 
 KtCallExpression(821,838): 'SimpleOperators()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {}
       contextArguments = []
@@ -763,7 +763,7 @@ KtValueArgumentList(836,838): '()'
   NO_CANDIDATES
 
 KtCallExpression(843,1229): 'with(A()){'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         A() -> (KaVariableSignature:
@@ -917,7 +917,7 @@ KtValueArgument(848,851): 'A()'
   NO_CANDIDATES
 
 KtCallExpression(848,851): 'A()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {}
       contextArguments = []
@@ -1294,7 +1294,7 @@ KtConstantExpression(944,945): '1'
   NO_CANDIDATES
 
 KtArrayAccessExpression(954,965): 'thisProp[1]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -1354,7 +1354,7 @@ KtConstantExpression(963,964): '1'
   NO_CANDIDATES
 
 KtArrayAccessExpression(974,978): 'a[1]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -1417,7 +1417,7 @@ KtBinaryExpression(987,1004): 'thisProp[1] = A()'
   NO_CANDIDATES
 
 KtArrayAccessExpression(987,998): 'thisProp[1]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -1494,7 +1494,7 @@ KtOperationReferenceExpression(999,1000): '='
   NO_CANDIDATES
 
 KtCallExpression(1001,1004): 'A()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {}
       contextArguments = []
@@ -1534,7 +1534,7 @@ KtBinaryExpression(1013,1023): 'a[1] = A()'
   NO_CANDIDATES
 
 KtArrayAccessExpression(1013,1017): 'a[1]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -1611,7 +1611,7 @@ KtOperationReferenceExpression(1018,1019): '='
   NO_CANDIDATES
 
 KtCallExpression(1020,1023): 'A()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {}
       contextArguments = []
@@ -1648,7 +1648,7 @@ KtValueArgumentList(1021,1023): '()'
   NO_CANDIDATES
 
 KtCallExpression(1032,1042): 'thisProp()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaImplicitInvokeCall:
       argumentMapping = {}
       contextArguments = []
@@ -1689,7 +1689,7 @@ KtValueArgumentList(1040,1042): '()'
   NO_CANDIDATES
 
 KtCallExpression(1051,1054): 'a()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaImplicitInvokeCall:
       argumentMapping = {}
       contextArguments = []
@@ -1917,40 +1917,39 @@ KtConstantExpression(1090,1091): '1'
 
 KtPostfixExpression(1100,1110): 'thisProp++'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundVariableAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = INC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = null
-          extensionReceiver = KaExplicitReceiverValue:
-            expression = thisProp
-            isSafeNavigation = false
-            type = A
-          signature = KaFunctionSignature:
-            receiverType = A
-            returnType = A
-            symbol = /inc(<extension receiver>: A): A
-            valueParameters = []
-            contextParameters = []
-            callableId = /inc
-          typeArgumentsMapping = {}
-        precedence = POSTFIX
-      variableCall = KaSimpleVariableAccessCall:
-        contextArguments = []
-        dispatchReceiver = null
-        extensionReceiver = null
-        isContextSensitive = false
-        kind = Read
-        signature = KaVariableSignature:
-          name = thisProp
-          receiverType = null
-          returnType = A
-          symbol = var thisProp: A
-          contextParameters = []
-          callableId = null
-        typeArgumentsMapping = {}
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = KaExplicitReceiverValue:
+        expression = thisProp
+        isSafeNavigation = false
+        type = A
+      signature = KaFunctionSignature:
+        receiverType = A
+        returnType = A
+        symbol = /inc(<extension receiver>: A): A
+        valueParameters = []
+        contextParameters = []
+        callableId = /inc
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleVariableAccessCall:
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = null
+      isContextSensitive = false
+      kind = Read
+      signature = KaVariableSignature:
+        name = thisProp
+        receiverType = null
+        returnType = A
+        symbol = var thisProp: A
+        contextParameters = []
+        callableId = null
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtNameReferenceExpression(1100,1108): 'thisProp'
@@ -1973,40 +1972,39 @@ KtNameReferenceExpression(1100,1108): 'thisProp'
 
 KtOperationReferenceExpression(1108,1110): '++'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundVariableAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = INC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = null
-          extensionReceiver = KaExplicitReceiverValue:
-            expression = thisProp
-            isSafeNavigation = false
-            type = A
-          signature = KaFunctionSignature:
-            receiverType = A
-            returnType = A
-            symbol = /inc(<extension receiver>: A): A
-            valueParameters = []
-            contextParameters = []
-            callableId = /inc
-          typeArgumentsMapping = {}
-        precedence = POSTFIX
-      variableCall = KaSimpleVariableAccessCall:
-        contextArguments = []
-        dispatchReceiver = null
-        extensionReceiver = null
-        isContextSensitive = false
-        kind = Read
-        signature = KaVariableSignature:
-          name = thisProp
-          receiverType = null
-          returnType = A
-          symbol = var thisProp: A
-          contextParameters = []
-          callableId = null
-        typeArgumentsMapping = {}
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = KaExplicitReceiverValue:
+        expression = thisProp
+        isSafeNavigation = false
+        type = A
+      signature = KaFunctionSignature:
+        receiverType = A
+        returnType = A
+        symbol = /inc(<extension receiver>: A): A
+        valueParameters = []
+        contextParameters = []
+        callableId = /inc
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleVariableAccessCall:
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = null
+      isContextSensitive = false
+      kind = Read
+      signature = KaVariableSignature:
+        name = thisProp
+        receiverType = null
+        returnType = A
+        symbol = var thisProp: A
+        contextParameters = []
+        callableId = null
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtBinaryExpression(1119,1126): 'a = a++'
@@ -2068,40 +2066,39 @@ KtOperationReferenceExpression(1121,1122): '='
 
 KtPostfixExpression(1123,1126): 'a++'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundVariableAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = INC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = null
-          extensionReceiver = KaExplicitReceiverValue:
-            expression = a
-            isSafeNavigation = false
-            type = A
-          signature = KaFunctionSignature:
-            receiverType = A
-            returnType = A
-            symbol = /inc(<extension receiver>: A): A
-            valueParameters = []
-            contextParameters = []
-            callableId = /inc
-          typeArgumentsMapping = {}
-        precedence = POSTFIX
-      variableCall = KaSimpleVariableAccessCall:
-        contextArguments = []
-        dispatchReceiver = null
-        extensionReceiver = null
-        isContextSensitive = false
-        kind = Read
-        signature = KaVariableSignature:
-          name = a
-          receiverType = null
-          returnType = A
-          symbol = var a: A
-          contextParameters = []
-          callableId = null
-        typeArgumentsMapping = {}
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = KaExplicitReceiverValue:
+        expression = a
+        isSafeNavigation = false
+        type = A
+      signature = KaFunctionSignature:
+        receiverType = A
+        returnType = A
+        symbol = /inc(<extension receiver>: A): A
+        valueParameters = []
+        contextParameters = []
+        callableId = /inc
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleVariableAccessCall:
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = null
+      isContextSensitive = false
+      kind = Read
+      signature = KaVariableSignature:
+        name = a
+        receiverType = null
+        returnType = A
+        symbol = var a: A
+        contextParameters = []
+        callableId = null
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtNameReferenceExpression(1123,1124): 'a'
@@ -2124,40 +2121,39 @@ KtNameReferenceExpression(1123,1124): 'a'
 
 KtOperationReferenceExpression(1124,1126): '++'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundVariableAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = INC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = null
-          extensionReceiver = KaExplicitReceiverValue:
-            expression = a
-            isSafeNavigation = false
-            type = A
-          signature = KaFunctionSignature:
-            receiverType = A
-            returnType = A
-            symbol = /inc(<extension receiver>: A): A
-            valueParameters = []
-            contextParameters = []
-            callableId = /inc
-          typeArgumentsMapping = {}
-        precedence = POSTFIX
-      variableCall = KaSimpleVariableAccessCall:
-        contextArguments = []
-        dispatchReceiver = null
-        extensionReceiver = null
-        isContextSensitive = false
-        kind = Read
-        signature = KaVariableSignature:
-          name = a
-          receiverType = null
-          returnType = A
-          symbol = var a: A
-          contextParameters = []
-          callableId = null
-        typeArgumentsMapping = {}
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = KaExplicitReceiverValue:
+        expression = a
+        isSafeNavigation = false
+        type = A
+      signature = KaFunctionSignature:
+        receiverType = A
+        returnType = A
+        symbol = /inc(<extension receiver>: A): A
+        valueParameters = []
+        contextParameters = []
+        callableId = /inc
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleVariableAccessCall:
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = null
+      isContextSensitive = false
+      kind = Read
+      signature = KaVariableSignature:
+        name = a
+        receiverType = null
+        returnType = A
+        symbol = var a: A
+        contextParameters = []
+        callableId = null
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtBinaryExpression(1136,1141): 'b + 1'
@@ -2312,7 +2308,7 @@ KtNameReferenceExpression(1151,1152): 'b'
     isInBestCandidates = true
 
 KtArrayAccessExpression(1161,1165): 'b[1]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -2347,7 +2343,7 @@ KtArrayAccessExpression(1161,1165): 'b[1]'
       typeArgumentsMapping = {}
     isInBestCandidates = true
 
-  KaInapplicableCallCandidateInfo:
+  KaInapplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -2411,7 +2407,7 @@ KtBinaryExpression(1174,1184): 'b[1] = A()'
   NO_CANDIDATES
 
 KtArrayAccessExpression(1174,1178): 'b[1]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -2460,7 +2456,7 @@ KtArrayAccessExpression(1174,1178): 'b[1]'
       typeArgumentsMapping = {}
     isInBestCandidates = true
 
-  KaInapplicableCallCandidateInfo:
+  KaInapplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -2538,7 +2534,7 @@ KtOperationReferenceExpression(1179,1180): '='
   NO_CANDIDATES
 
 KtCallExpression(1181,1184): 'A()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {}
       contextArguments = []
@@ -2575,7 +2571,7 @@ KtValueArgumentList(1182,1184): '()'
   NO_CANDIDATES
 
 KtCallExpression(1193,1196): 'b()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaImplicitInvokeCall:
       argumentMapping = {}
       contextArguments = []
@@ -2594,7 +2590,7 @@ KtCallExpression(1193,1196): 'b()'
       typeArgumentsMapping = {}
     isInBestCandidates = true
 
-  KaInapplicableCallCandidateInfo:
+  KaInapplicableCallCandidate:
     candidate = KaImplicitInvokeCall:
       argumentMapping = {}
       contextArguments = []
@@ -2730,40 +2726,39 @@ KtConstantExpression(1210,1211): '1'
 
 KtPostfixExpression(1220,1223): 'b++'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundVariableAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = INC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = KaExplicitReceiverValue:
-            expression = b
-            isSafeNavigation = false
-            type = SimpleOperators
-          extensionReceiver = null
-          signature = KaFunctionSignature:
-            receiverType = null
-            returnType = SimpleOperators
-            symbol = /SimpleOperators.inc(<dispatch receiver>: SimpleOperators): SimpleOperators
-            valueParameters = []
-            contextParameters = []
-            callableId = /SimpleOperators.inc
-          typeArgumentsMapping = {}
-        precedence = POSTFIX
-      variableCall = KaSimpleVariableAccessCall:
-        contextArguments = []
-        dispatchReceiver = null
-        extensionReceiver = null
-        isContextSensitive = false
-        kind = Read
-        signature = KaVariableSignature:
-          name = b
-          receiverType = null
-          returnType = SimpleOperators
-          symbol = var b: SimpleOperators
-          contextParameters = []
-          callableId = null
-        typeArgumentsMapping = {}
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = b
+        isSafeNavigation = false
+        type = SimpleOperators
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = SimpleOperators
+        symbol = /SimpleOperators.inc(<dispatch receiver>: SimpleOperators): SimpleOperators
+        valueParameters = []
+        contextParameters = []
+        callableId = /SimpleOperators.inc
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleVariableAccessCall:
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = null
+      isContextSensitive = false
+      kind = Read
+      signature = KaVariableSignature:
+        name = b
+        receiverType = null
+        returnType = SimpleOperators
+        symbol = var b: SimpleOperators
+        contextParameters = []
+        callableId = null
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtNameReferenceExpression(1220,1221): 'b'
@@ -2786,40 +2781,39 @@ KtNameReferenceExpression(1220,1221): 'b'
 
 KtOperationReferenceExpression(1221,1223): '++'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundVariableAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = INC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = KaExplicitReceiverValue:
-            expression = b
-            isSafeNavigation = false
-            type = SimpleOperators
-          extensionReceiver = null
-          signature = KaFunctionSignature:
-            receiverType = null
-            returnType = SimpleOperators
-            symbol = /SimpleOperators.inc(<dispatch receiver>: SimpleOperators): SimpleOperators
-            valueParameters = []
-            contextParameters = []
-            callableId = /SimpleOperators.inc
-          typeArgumentsMapping = {}
-        precedence = POSTFIX
-      variableCall = KaSimpleVariableAccessCall:
-        contextArguments = []
-        dispatchReceiver = null
-        extensionReceiver = null
-        isContextSensitive = false
-        kind = Read
-        signature = KaVariableSignature:
-          name = b
-          receiverType = null
-          returnType = SimpleOperators
-          symbol = var b: SimpleOperators
-          contextParameters = []
-          callableId = null
-        typeArgumentsMapping = {}
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = b
+        isSafeNavigation = false
+        type = SimpleOperators
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = SimpleOperators
+        symbol = /SimpleOperators.inc(<dispatch receiver>: SimpleOperators): SimpleOperators
+        valueParameters = []
+        contextParameters = []
+        callableId = /SimpleOperators.inc
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleVariableAccessCall:
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = null
+      isContextSensitive = false
+      kind = Read
+      signature = KaVariableSignature:
+        name = b
+        receiverType = null
+        returnType = SimpleOperators
+        symbol = var b: SimpleOperators
+        contextParameters = []
+        callableId = null
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtNamedFunction(1233,1441): 'fun withoutContext() {'
@@ -2835,7 +2829,7 @@ KtProperty(1260,1271): 'var a = A()'
   NO_CANDIDATES
 
 KtCallExpression(1268,1271): 'A()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {}
       contextArguments = []
@@ -2875,7 +2869,7 @@ KtProperty(1276,1301): 'var b = SimpleOperators()'
   NO_CANDIDATES
 
 KtCallExpression(1284,1301): 'SimpleOperators()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {}
       contextArguments = []
@@ -3063,7 +3057,7 @@ KtConstantExpression(1318,1319): '1'
   NO_CANDIDATES
 
 KtArrayAccessExpression(1324,1328): 'a[1]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -3126,7 +3120,7 @@ KtBinaryExpression(1333,1343): 'a[1] = A()'
   NO_CANDIDATES
 
 KtArrayAccessExpression(1333,1337): 'a[1]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -3203,7 +3197,7 @@ KtOperationReferenceExpression(1338,1339): '='
   NO_CANDIDATES
 
 KtCallExpression(1340,1343): 'A()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {}
       contextArguments = []
@@ -3240,7 +3234,7 @@ KtValueArgumentList(1341,1343): '()'
   NO_CANDIDATES
 
 KtCallExpression(1348,1351): 'a()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaImplicitInvokeCall:
       argumentMapping = {}
       contextArguments = []
@@ -3375,40 +3369,39 @@ KtConstantExpression(1361,1362): '1'
 
 KtPostfixExpression(1367,1370): 'a++'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundVariableAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = INC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = null
-          extensionReceiver = KaExplicitReceiverValue:
-            expression = a
-            isSafeNavigation = false
-            type = A
-          signature = KaFunctionSignature:
-            receiverType = A
-            returnType = A
-            symbol = /inc(<extension receiver>: A): A
-            valueParameters = []
-            contextParameters = []
-            callableId = /inc
-          typeArgumentsMapping = {}
-        precedence = POSTFIX
-      variableCall = KaSimpleVariableAccessCall:
-        contextArguments = []
-        dispatchReceiver = null
-        extensionReceiver = null
-        isContextSensitive = false
-        kind = Read
-        signature = KaVariableSignature:
-          name = a
-          receiverType = null
-          returnType = A
-          symbol = var a: A
-          contextParameters = []
-          callableId = null
-        typeArgumentsMapping = {}
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = KaExplicitReceiverValue:
+        expression = a
+        isSafeNavigation = false
+        type = A
+      signature = KaFunctionSignature:
+        receiverType = A
+        returnType = A
+        symbol = /inc(<extension receiver>: A): A
+        valueParameters = []
+        contextParameters = []
+        callableId = /inc
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleVariableAccessCall:
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = null
+      isContextSensitive = false
+      kind = Read
+      signature = KaVariableSignature:
+        name = a
+        receiverType = null
+        returnType = A
+        symbol = var a: A
+        contextParameters = []
+        callableId = null
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtNameReferenceExpression(1367,1368): 'a'
@@ -3431,40 +3424,39 @@ KtNameReferenceExpression(1367,1368): 'a'
 
 KtOperationReferenceExpression(1368,1370): '++'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundVariableAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = INC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = null
-          extensionReceiver = KaExplicitReceiverValue:
-            expression = a
-            isSafeNavigation = false
-            type = A
-          signature = KaFunctionSignature:
-            receiverType = A
-            returnType = A
-            symbol = /inc(<extension receiver>: A): A
-            valueParameters = []
-            contextParameters = []
-            callableId = /inc
-          typeArgumentsMapping = {}
-        precedence = POSTFIX
-      variableCall = KaSimpleVariableAccessCall:
-        contextArguments = []
-        dispatchReceiver = null
-        extensionReceiver = null
-        isContextSensitive = false
-        kind = Read
-        signature = KaVariableSignature:
-          name = a
-          receiverType = null
-          returnType = A
-          symbol = var a: A
-          contextParameters = []
-          callableId = null
-        typeArgumentsMapping = {}
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = KaExplicitReceiverValue:
+        expression = a
+        isSafeNavigation = false
+        type = A
+      signature = KaFunctionSignature:
+        receiverType = A
+        returnType = A
+        symbol = /inc(<extension receiver>: A): A
+        valueParameters = []
+        contextParameters = []
+        callableId = /inc
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleVariableAccessCall:
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = null
+      isContextSensitive = false
+      kind = Read
+      signature = KaVariableSignature:
+        name = a
+        receiverType = null
+        returnType = A
+        symbol = var a: A
+        contextParameters = []
+        callableId = null
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtBinaryExpression(1376,1381): 'b + 1'
@@ -3619,7 +3611,7 @@ KtNameReferenceExpression(1387,1388): 'b'
     isInBestCandidates = true
 
 KtArrayAccessExpression(1393,1397): 'b[1]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -3654,7 +3646,7 @@ KtArrayAccessExpression(1393,1397): 'b[1]'
       typeArgumentsMapping = {}
     isInBestCandidates = true
 
-  KaInapplicableCallCandidateInfo:
+  KaInapplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -3718,7 +3710,7 @@ KtBinaryExpression(1402,1412): 'b[1] = A()'
   NO_CANDIDATES
 
 KtArrayAccessExpression(1402,1406): 'b[1]'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -3767,7 +3759,7 @@ KtArrayAccessExpression(1402,1406): 'b[1]'
       typeArgumentsMapping = {}
     isInBestCandidates = true
 
-  KaInapplicableCallCandidateInfo:
+  KaInapplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {
         1 -> (KaVariableSignature:
@@ -3845,7 +3837,7 @@ KtOperationReferenceExpression(1407,1408): '='
   NO_CANDIDATES
 
 KtCallExpression(1409,1412): 'A()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaSimpleFunctionCall:
       argumentMapping = {}
       contextArguments = []
@@ -3882,7 +3874,7 @@ KtValueArgumentList(1410,1412): '()'
   NO_CANDIDATES
 
 KtCallExpression(1417,1420): 'b()'
-  KaApplicableCallCandidateInfo:
+  KaApplicableCallCandidate:
     candidate = KaImplicitInvokeCall:
       argumentMapping = {}
       contextArguments = []
@@ -3901,7 +3893,7 @@ KtCallExpression(1417,1420): 'b()'
       typeArgumentsMapping = {}
     isInBestCandidates = true
 
-  KaInapplicableCallCandidateInfo:
+  KaInapplicableCallCandidate:
     candidate = KaImplicitInvokeCall:
       argumentMapping = {}
       contextArguments = []
@@ -4037,40 +4029,39 @@ KtConstantExpression(1430,1431): '1'
 
 KtPostfixExpression(1436,1439): 'b++'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundVariableAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = INC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = KaExplicitReceiverValue:
-            expression = b
-            isSafeNavigation = false
-            type = SimpleOperators
-          extensionReceiver = null
-          signature = KaFunctionSignature:
-            receiverType = null
-            returnType = SimpleOperators
-            symbol = /SimpleOperators.inc(<dispatch receiver>: SimpleOperators): SimpleOperators
-            valueParameters = []
-            contextParameters = []
-            callableId = /SimpleOperators.inc
-          typeArgumentsMapping = {}
-        precedence = POSTFIX
-      variableCall = KaSimpleVariableAccessCall:
-        contextArguments = []
-        dispatchReceiver = null
-        extensionReceiver = null
-        isContextSensitive = false
-        kind = Read
-        signature = KaVariableSignature:
-          name = b
-          receiverType = null
-          returnType = SimpleOperators
-          symbol = var b: SimpleOperators
-          contextParameters = []
-          callableId = null
-        typeArgumentsMapping = {}
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = b
+        isSafeNavigation = false
+        type = SimpleOperators
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = SimpleOperators
+        symbol = /SimpleOperators.inc(<dispatch receiver>: SimpleOperators): SimpleOperators
+        valueParameters = []
+        contextParameters = []
+        callableId = /SimpleOperators.inc
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleVariableAccessCall:
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = null
+      isContextSensitive = false
+      kind = Read
+      signature = KaVariableSignature:
+        name = b
+        receiverType = null
+        returnType = SimpleOperators
+        symbol = var b: SimpleOperators
+        contextParameters = []
+        callableId = null
+      typeArgumentsMapping = {}
     isInBestCandidates = true
 
 KtNameReferenceExpression(1436,1437): 'b'
@@ -4093,38 +4084,37 @@ KtNameReferenceExpression(1436,1437): 'b'
 
 KtOperationReferenceExpression(1437,1439): '++'
   KaApplicableCallCandidateInfo:
-    candidate = KaCompoundVariableAccessCall:
-      compoundOperation = KaCompoundUnaryOperation:
-        kind = INC
-        operationCall = KaSimpleFunctionCall:
-          argumentMapping = {}
-          contextArguments = []
-          dispatchReceiver = KaExplicitReceiverValue:
-            expression = b
-            isSafeNavigation = false
-            type = SimpleOperators
-          extensionReceiver = null
-          signature = KaFunctionSignature:
-            receiverType = null
-            returnType = SimpleOperators
-            symbol = /SimpleOperators.inc(<dispatch receiver>: SimpleOperators): SimpleOperators
-            valueParameters = []
-            contextParameters = []
-            callableId = /SimpleOperators.inc
-          typeArgumentsMapping = {}
-        precedence = POSTFIX
-      variableCall = KaSimpleVariableAccessCall:
-        contextArguments = []
-        dispatchReceiver = null
-        extensionReceiver = null
-        isContextSensitive = false
-        kind = Read
-        signature = KaVariableSignature:
-          name = b
-          receiverType = null
-          returnType = SimpleOperators
-          symbol = var b: SimpleOperators
-          contextParameters = []
-          callableId = null
-        typeArgumentsMapping = {}
+    candidate = KaSimpleFunctionCall:
+      argumentMapping = {}
+      contextArguments = []
+      dispatchReceiver = KaExplicitReceiverValue:
+        expression = b
+        isSafeNavigation = false
+        type = SimpleOperators
+      extensionReceiver = null
+      signature = KaFunctionSignature:
+        receiverType = null
+        returnType = SimpleOperators
+        symbol = /SimpleOperators.inc(<dispatch receiver>: SimpleOperators): SimpleOperators
+        valueParameters = []
+        contextParameters = []
+        callableId = /SimpleOperators.inc
+      typeArgumentsMapping = {}
+    isInBestCandidates = true
+
+  KaApplicableCallCandidateInfo:
+    candidate = KaSimpleVariableAccessCall:
+      contextArguments = []
+      dispatchReceiver = null
+      extensionReceiver = null
+      isContextSensitive = false
+      kind = Read
+      signature = KaVariableSignature:
+        name = b
+        receiverType = null
+        returnType = SimpleOperators
+        symbol = var b: SimpleOperators
+        contextParameters = []
+        callableId = null
+      typeArgumentsMapping = {}
     isInBestCandidates = true
