@@ -123,3 +123,7 @@ If there are many options for the JetBrains IDE MCP server, ask the user what MC
 - **Refactoring**: `rename_refactoring` for symbol renaming (safer than text replacement)
 - **Terminal**: `execute_terminal_command` for running commands
 - **Run configurations**: `get_run_configurations()` to discover, or `execute_run_configuration(name="...")` if name is known
+
+### MANDATORY - Verify After Writing Code
+
+Use JetBrains MCP `get_file_problems` with errorsOnly=false to check files for warnings. FIX any warnings related to the code changes made. You may ignore unrelated warnings.
