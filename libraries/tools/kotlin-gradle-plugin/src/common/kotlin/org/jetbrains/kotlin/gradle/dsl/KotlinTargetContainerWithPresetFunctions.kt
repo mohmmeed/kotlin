@@ -44,7 +44,7 @@ interface KotlinTargetContainerWithPresetFunctions : KotlinTargetsContainer {
     /**
      * The 'org.jetbrains.kotlin.multiplatform' plugin will not be compatible with most of the Android Gradle plugins
      * from Android Gradle Plugin version 9.0.0.
-     *
+     * 
      * Please use the 'com.android.kotlin.multiplatform.library' plugin instead. Read more: https://kotl.in/gradle/agp-new-kmp
      * The change may require changing the structure of your project. Read more: https://kotl.in/kmp-project-structure-migration
      */
@@ -56,7 +56,7 @@ interface KotlinTargetContainerWithPresetFunctions : KotlinTargetsContainer {
     /**
      * The 'org.jetbrains.kotlin.multiplatform' plugin will not be compatible with most of the Android Gradle plugins
      * from Android Gradle Plugin version 9.0.0.
-     *
+     * 
      * Please use the 'com.android.kotlin.multiplatform.library' plugin instead. Read more: https://kotl.in/gradle/agp-new-kmp
      * The change may require changing the structure of your project. Read more: https://kotl.in/kmp-project-structure-migration
      */
@@ -65,7 +65,7 @@ interface KotlinTargetContainerWithPresetFunctions : KotlinTargetsContainer {
     /**
      * The 'org.jetbrains.kotlin.multiplatform' plugin will not be compatible with most of the Android Gradle plugins
      * from Android Gradle Plugin version 9.0.0.
-     *
+     * 
      * Please use the 'com.android.kotlin.multiplatform.library' plugin instead. Read more: https://kotl.in/gradle/agp-new-kmp
      * The change may require changing the structure of your project. Read more: https://kotl.in/kmp-project-structure-migration
      */
@@ -74,7 +74,7 @@ interface KotlinTargetContainerWithPresetFunctions : KotlinTargetsContainer {
     /**
      * The 'org.jetbrains.kotlin.multiplatform' plugin will not be compatible with most of the Android Gradle plugins
      * from Android Gradle Plugin version 9.0.0.
-     *
+     * 
      * Please use the 'com.android.kotlin.multiplatform.library' plugin instead. Read more: https://kotl.in/gradle/agp-new-kmp
      * The change may require changing the structure of your project. Read more: https://kotl.in/kmp-project-structure-migration
      */
@@ -86,7 +86,7 @@ interface KotlinTargetContainerWithPresetFunctions : KotlinTargetsContainer {
     /**
      * The 'org.jetbrains.kotlin.multiplatform' plugin will not be compatible with most of the Android Gradle plugins
      * from Android Gradle Plugin version 9.0.0.
-     *
+     * 
      * Please use the 'com.android.kotlin.multiplatform.library' plugin instead. Read more: https://kotl.in/gradle/agp-new-kmp
      * The change may require changing the structure of your project. Read more: https://kotl.in/kmp-project-structure-migration
      */
@@ -500,7 +500,7 @@ internal abstract class DefaultKotlinTargetContainerWithPresetFunctions @Inject 
     /**
      * The 'org.jetbrains.kotlin.multiplatform' plugin will not be compatible with most of the Android Gradle plugins
      * from Android Gradle Plugin version 9.0.0.
-     *
+     * 
      * Please use the 'com.android.kotlin.multiplatform.library' plugin instead. Read more: https://kotl.in/gradle/agp-new-kmp
      * The change may require changing the structure of your project. Read more: https://kotl.in/kmp-project-structure-migration
      */
