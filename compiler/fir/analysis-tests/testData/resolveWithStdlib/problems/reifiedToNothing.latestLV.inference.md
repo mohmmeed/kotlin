@@ -81,9 +81,9 @@ parse#(R|/decode|(R|<local>/token|))
    	false HAS_PROPER_NON_TRIVIAL_CONSTRAINTS
    	false HAS_NO_RELATION_TO_ANY_OUTPUT_TYPE
    	false HAS_PROPER_NON_TRIVIAL_CONSTRAINTS_OTHER_THAN_INCORPORATED_FROM_DECLARED_UPPER_BOUND
-   	false REIFIED
    	false HAS_PROPER_NON_NOTHING_NON_ILT_LOWER_CONSTRAINT
    	false HAS_PROPER_NON_ILT_CONSTRAINT
+   	false ONLY_HAS_ONE_SIDE_CONSTRAINTS
    )`
 
 ### Call 5
@@ -120,9 +120,9 @@ catch (e: R|{kotlin/Exception=} java/lang/Exception|) {
    	false HAS_PROPER_NON_TRIVIAL_CONSTRAINTS
    	false HAS_NO_RELATION_TO_ANY_OUTPUT_TYPE
    	false HAS_PROPER_NON_TRIVIAL_CONSTRAINTS_OTHER_THAN_INCORPORATED_FROM_DECLARED_UPPER_BOUND
-   	false REIFIED
    	false HAS_PROPER_NON_NOTHING_NON_ILT_LOWER_CONSTRAINT
    	false HAS_PROPER_NON_ILT_CONSTRAINT
+   	false ONLY_HAS_ONE_SIDE_CONSTRAINTS
    )`
     1. `TypeVariable(P)` is `Readiness(
        	false ALLOWED
@@ -134,9 +134,9 @@ catch (e: R|{kotlin/Exception=} java/lang/Exception|) {
        	false HAS_PROPER_NON_TRIVIAL_CONSTRAINTS
        	false HAS_NO_RELATION_TO_ANY_OUTPUT_TYPE
        	false HAS_PROPER_NON_TRIVIAL_CONSTRAINTS_OTHER_THAN_INCORPORATED_FROM_DECLARED_UPPER_BOUND
-       	false REIFIED
        	false HAS_PROPER_NON_NOTHING_NON_ILT_LOWER_CONSTRAINT
        	false HAS_PROPER_NON_ILT_CONSTRAINT
+       	false ONLY_HAS_ONE_SIDE_CONSTRAINTS
        )`
 
 ### Call 2
@@ -182,9 +182,9 @@ ifTrue#(R|<local>/flag|, <L> = ifTrue@fun <implicit>.<anonymous>(): <implicit> <
    	 true HAS_PROPER_NON_TRIVIAL_CONSTRAINTS
    	 true HAS_NO_RELATION_TO_ANY_OUTPUT_TYPE
    	 true HAS_PROPER_NON_TRIVIAL_CONSTRAINTS_OTHER_THAN_INCORPORATED_FROM_DECLARED_UPPER_BOUND
-   	 true REIFIED
    	false HAS_PROPER_NON_NOTHING_NON_ILT_LOWER_CONSTRAINT
    	 true HAS_PROPER_NON_ILT_CONSTRAINT
+   	 true ONLY_HAS_ONE_SIDE_CONSTRAINTS
    )`
     1. `TypeVariable(T)` is `Readiness(
        	 true ALLOWED
@@ -196,9 +196,9 @@ ifTrue#(R|<local>/flag|, <L> = ifTrue@fun <implicit>.<anonymous>(): <implicit> <
        	 true HAS_PROPER_NON_TRIVIAL_CONSTRAINTS
        	 true HAS_NO_RELATION_TO_ANY_OUTPUT_TYPE
        	 true HAS_PROPER_NON_TRIVIAL_CONSTRAINTS_OTHER_THAN_INCORPORATED_FROM_DECLARED_UPPER_BOUND
-       	false REIFIED
        	false HAS_PROPER_NON_NOTHING_NON_ILT_LOWER_CONSTRAINT
        	 true HAS_PROPER_NON_ILT_CONSTRAINT
+       	false ONLY_HAS_ONE_SIDE_CONSTRAINTS
        )`
     2. `TypeVariable(K)` is `Readiness(
        	 true ALLOWED
@@ -210,9 +210,9 @@ ifTrue#(R|<local>/flag|, <L> = ifTrue@fun <implicit>.<anonymous>(): <implicit> <
        	 true HAS_PROPER_NON_TRIVIAL_CONSTRAINTS
        	 true HAS_NO_RELATION_TO_ANY_OUTPUT_TYPE
        	 true HAS_PROPER_NON_TRIVIAL_CONSTRAINTS_OTHER_THAN_INCORPORATED_FROM_DECLARED_UPPER_BOUND
-       	false REIFIED
        	false HAS_PROPER_NON_NOTHING_NON_ILT_LOWER_CONSTRAINT
        	 true HAS_PROPER_NON_ILT_CONSTRAINT
+       	false ONLY_HAS_ONE_SIDE_CONSTRAINTS
        )`
 9. `TypeVariable(P) == Result` _from Fix variable P_
 10. Combine `TypeVariable(P) == Result` with `TypeVariable(P) <: TypeVariable(K)`
@@ -229,9 +229,9 @@ ifTrue#(R|<local>/flag|, <L> = ifTrue@fun <implicit>.<anonymous>(): <implicit> <
     	 true HAS_PROPER_NON_TRIVIAL_CONSTRAINTS
     	 true HAS_NO_RELATION_TO_ANY_OUTPUT_TYPE
     	 true HAS_PROPER_NON_TRIVIAL_CONSTRAINTS_OTHER_THAN_INCORPORATED_FROM_DECLARED_UPPER_BOUND
-    	false REIFIED
     	 true HAS_PROPER_NON_NOTHING_NON_ILT_LOWER_CONSTRAINT
     	 true HAS_PROPER_NON_ILT_CONSTRAINT
+    	false ONLY_HAS_ONE_SIDE_CONSTRAINTS
     )`
     1. `TypeVariable(K)` is `Readiness(
        	 true ALLOWED
@@ -243,9 +243,9 @@ ifTrue#(R|<local>/flag|, <L> = ifTrue@fun <implicit>.<anonymous>(): <implicit> <
        	 true HAS_PROPER_NON_TRIVIAL_CONSTRAINTS
        	 true HAS_NO_RELATION_TO_ANY_OUTPUT_TYPE
        	 true HAS_PROPER_NON_TRIVIAL_CONSTRAINTS_OTHER_THAN_INCORPORATED_FROM_DECLARED_UPPER_BOUND
-       	false REIFIED
        	 true HAS_PROPER_NON_NOTHING_NON_ILT_LOWER_CONSTRAINT
        	 true HAS_PROPER_NON_ILT_CONSTRAINT
+       	false ONLY_HAS_ONE_SIDE_CONSTRAINTS
        )`
 13. `TypeVariable(T) == Result` _from Fix variable T_
 14. Choose `TypeVariable(K)` with `Readiness(
@@ -258,8 +258,8 @@ ifTrue#(R|<local>/flag|, <L> = ifTrue@fun <implicit>.<anonymous>(): <implicit> <
     	 true HAS_PROPER_NON_TRIVIAL_CONSTRAINTS
     	 true HAS_NO_RELATION_TO_ANY_OUTPUT_TYPE
     	 true HAS_PROPER_NON_TRIVIAL_CONSTRAINTS_OTHER_THAN_INCORPORATED_FROM_DECLARED_UPPER_BOUND
-    	false REIFIED
     	 true HAS_PROPER_NON_NOTHING_NON_ILT_LOWER_CONSTRAINT
     	 true HAS_PROPER_NON_ILT_CONSTRAINT
+    	false ONLY_HAS_ONE_SIDE_CONSTRAINTS
     )`
 15. `TypeVariable(K) == Result?` _from Fix variable K_

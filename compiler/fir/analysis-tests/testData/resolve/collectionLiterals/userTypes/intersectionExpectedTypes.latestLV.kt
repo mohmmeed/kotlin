@@ -50,7 +50,7 @@ fun intersectionWithOuterTvInPCLA() {
     buildBox {
         val x = get()
         x as B
-        expectThroughTV([42] /*resolved to A.of() */, x)
+        expectThroughTV(<!UNSUPPORTED_COLLECTION_LITERAL_TYPE!>[42]<!> /*resolved to A.of() */, x)
         put(A.of())
     }
 
