@@ -10,7 +10,6 @@ import org.jetbrains.kotlin.backend.common.IrElementTransformerVoidWithContext
 import org.jetbrains.kotlin.backend.common.IrWhenUtils
 import org.jetbrains.kotlin.backend.common.lower.createIrBuilder
 import org.jetbrains.kotlin.backend.wasm.WasmBackendContext
-import org.jetbrains.kotlin.ir.IrStatement
 import org.jetbrains.kotlin.ir.builders.*
 import org.jetbrains.kotlin.ir.builders.declarations.buildVariable
 import org.jetbrains.kotlin.ir.declarations.*
@@ -232,12 +231,12 @@ class WasmStringSwitchOptimizerLowering(
         return irWhen(transformedWhen.type, mainResultsBranches)
     }
 
-    private fun extractValueSymbol(condition: IrCall): IrValueSymbol {
+    private fun extractIrValueSymbol(condition: IrCall): IrValueSymbol {
         val op1 = condition.arguments[0]!!
         val op2 = condition.arguments[1]!!
 
-        val conditionVar = op1 as? IrGetValue ?: op2 as IrGetValue
-        return conditionVar.symbol
+        val conditionGetValue = op1 as? IrGetValue ?: op2 as IrGetValue
+        return conditionGetValue.symbol
     }
 
     override fun visitWhen(expression: IrWhen): IrExpression {
@@ -245,7 +244,7 @@ class WasmStringSwitchOptimizerLowering(
         if (visitedWhen.branches.size <= 2) return visitedWhen
 
         var firstEqCall: IrCall? = null
-        var varSymbol: IrValueSymbol? = null // check if the variable is the same across all branches
+        var irValueSymbol: IrValueSymbol? = null // check if the same variable appears in all branches
         var isSimpleWhen = true //simple when is when without else block and commas
         val stringConstantToMatchedCase = mutableMapOf<String?, MatchedCase>()
         visitedWhen.branches.forEachIndexed { branchIndex, branch ->
@@ -258,11 +257,11 @@ class WasmStringSwitchOptimizerLowering(
                     val matchedStringConstant = tryMatchCaseToNullableStringConstant(condition) ?: return visitedWhen
                     val matchedString = matchedStringConstant.value as? String
 
-                    val extractedSymbol = extractValueSymbol(condition)
-                    if (varSymbol != null && extractedSymbol != varSymbol) {
+                    val extractedSymbol = extractIrValueSymbol(condition)
+                    if (irValueSymbol != null && extractedSymbol != irValueSymbol) {
                         return visitedWhen
                     }
-                    varSymbol = varSymbol ?: extractedSymbol
+                    irValueSymbol = irValueSymbol ?: extractedSymbol
 
                     if (matchedString !in stringConstantToMatchedCase) {
                         stringConstantToMatchedCase[matchedString] = MatchedCase(condition, branchIndex)
