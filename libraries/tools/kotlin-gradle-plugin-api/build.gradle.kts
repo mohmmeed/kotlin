@@ -69,6 +69,10 @@ generatedSourcesTask(
     }
 )
 
+tasks.named("generateKotlinVersionConstant").configure {
+    finalizedBy("apiDump")
+}
+
 configurations.all {
     resolutionStrategy.eachDependency {
         if (requested.group == "org.apache.commons" && requested.name == "commons-lang3") {
