@@ -24,3 +24,7 @@
 Thinking is **on by default** in CC >2.0.70 and it's discouraged to turn it off. 
 
 Previously claude required prompting it to "think harder" or "ultrathink" – it's now not required
+
+## Local Preferences
+
+`../.claude/local.md` file can be used to store local preferences
