@@ -64,13 +64,11 @@ class NonIncrementalCompilationSmokeTest : BaseCompilationTest() {
             }
             val compilerVersion = kotlinToolchain.getCompilerVersion()
             fun assertFailsWith(message: String, transformActualMessage: (String?) -> String? = { it }) {
-                if (kotlinToolchain.getCompilerVersion().startsWith("2.0")) {
-                    val exception = assertThrows<IllegalStateException> { module1.compile {} }
-                    assertEquals(
-                        message,
-                        transformActualMessage(exception.message)
-                    )
-                }
+                val exception = assertThrows<IllegalStateException> { module1.compile {} }
+                assertEquals(
+                    message,
+                    transformActualMessage(exception.message)
+                )
             }
 
             fun assertSucceeds() {
@@ -78,6 +76,7 @@ class NonIncrementalCompilationSmokeTest : BaseCompilationTest() {
                     assertOutputs("FooKt.class", "Bar.class", "BazKt.class")
                 }
             }
+            println(compilerVersion)
             when {
                 compilerVersion.startsWith("2.0") -> assertFailsWith("X_USE_K2_KAPT is available only since 2.1.0")
                 compilerVersion.startsWith("2.1") -> assertSucceeds()
@@ -85,7 +84,10 @@ class NonIncrementalCompilationSmokeTest : BaseCompilationTest() {
                 compilerVersion.startsWith("2.3") -> assertFailsWith("Compiler parameter not recognized: X_USE_K2_KAPT. Current compiler version is: ${kotlinToolchain.getCompilerVersion()}, but the argument was introduced in 2.1.0 and removed in 2.3.0") {
                     it?.replace("}", "") // there was an extra "}" in 2.3.0 by mistake
                 }
-                else -> assertFailsWith("Compiler parameter not recognized: X_USE_K2_KAPT. Current compiler version is: ${kotlinToolchain.getCompilerVersion()}, but the argument was introduced in 2.1.0 and removed in 2.3.0")
+                else -> assertFailsWith("Compiler parameter not recognized: X_USE_K2_KAPT. Current compiler version is: ${kotlinToolchain.getCompilerVersion()}, but the argument was removed in 2.3.0") {
+                    // the part about introduction may be omitted if it was introduced long enough time ago
+                    it?.replace("introduced in 2.1.0 and ", "")
+                }
             }
         }
     }
