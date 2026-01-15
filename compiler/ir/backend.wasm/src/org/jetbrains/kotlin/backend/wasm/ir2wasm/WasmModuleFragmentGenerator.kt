@@ -20,6 +20,9 @@ class ModuleReferencedDeclarations {
     val referencedGlobalVTable = mutableSetOf<IdSignature>()
     val referencedGlobalClassITable = mutableSetOf<IdSignature>()
     val referencedRttiGlobal = mutableSetOf<IdSignature>()
+
+    val referencedGcTypes = mutableSetOf<IdSignature>()
+    val referencedFunctionTypes = mutableSetOf<IdSignature>()
 }
 
 class WasmModuleFragmentGenerator(
@@ -53,11 +56,11 @@ class WasmModuleFragmentGenerator(
     fun generateModuleAsSingleFileFragmentWithModuleExport(
         irModuleFragment: IrModuleFragment,
         referencedDeclarations: ModuleReferencedDeclarations,
-    ): WasmCompiledFileFragment {
+    ): Pair<WasmCompiledFileFragment, WasmFileCodegenContextWithExport> {
         val wasmFileFragment = WasmCompiledFileFragment(fragmentTag = null)
         val wasmFileCodegenContext = WasmFileCodegenContextWithExport(wasmFileFragment, idSignatureRetriever, referencedDeclarations)
         generate(irModuleFragment, wasmFileCodegenContext)
-        return wasmFileFragment
+        return wasmFileFragment to wasmFileCodegenContext
     }
 
     private fun generate(irModuleFragment: IrModuleFragment, wasmFileCodegenContext: WasmFileCodegenContext) {

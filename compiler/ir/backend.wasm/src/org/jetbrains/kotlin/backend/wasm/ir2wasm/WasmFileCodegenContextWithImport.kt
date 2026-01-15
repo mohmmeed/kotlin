@@ -83,6 +83,16 @@ class WasmFileCodegenContextWithImport(
         return true
     }
 
+    override fun needToBeDefinedGcType(declaration: IrClassSymbol): Boolean {
+        val signature = idSignatureRetriever.declarationSignature(declaration.owner)
+        return signature in moduleReferencedDeclarations.referencedGcTypes
+    }
+
+    override fun needToBeDefinedFunctionType(declaration: IrFunctionSymbol): Boolean {
+        val signature = idSignatureRetriever.declarationSignature(declaration.owner)
+        return signature in moduleReferencedDeclarations.referencedFunctionTypes
+    }
+
     override fun handleGlobalField(declaration: IrFieldSymbol): Boolean = true
 
     override fun addObjectInstanceFieldInitializer(initializer: IrFunctionSymbol) {

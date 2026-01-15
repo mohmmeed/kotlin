@@ -79,6 +79,8 @@ class DeclarationGenerator(
         if (declaration.isFakeOverride)
             return
 
+        if (!wasmFileCodegenContext.needToBeDefinedFunctionType(declaration.symbol)) return
+
         // Generate function type
         val watName = declaration.fqNameWhenAvailable.toString()
         val irParameters = declaration.getEffectiveValueParameters()
@@ -528,6 +530,8 @@ class DeclarationGenerator(
         }
 
         val nameStr = declaration.fqNameWhenAvailable.toString()
+
+        if (!wasmFileCodegenContext.needToBeDefinedGcType(declaration.symbol)) return
 
         if (declaration.isInterface) {
             val vtableStruct = createVirtualTableStruct(
