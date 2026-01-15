@@ -50,6 +50,7 @@
 # AI
 /.ai/ "Kotlin" "Kotlin Analysis API" "Kotlin Build Infrastructure"
 /.claude/ "Kotlin" "Kotlin Analysis API" "Kotlin Build Infrastructure"
+/.junie/ "Kotlin" "Kotlin Analysis API" "Kotlin Build Infrastructure"
 
 /analysis/ "Kotlin Analysis API"
 /analysis/analysis-api-fir/gen/ "Kotlin Frontend"

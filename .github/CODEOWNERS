@@ -18,6 +18,7 @@
 
 /.ai/ @JetBrains/kotlin @JetBrains/kotlin-analysis-api @JetBrains/kotlin-build-infrastructure
 /.claude/ @JetBrains/kotlin @JetBrains/kotlin-analysis-api @JetBrains/kotlin-build-infrastructure
+/.junie/ @JetBrains/kotlin @JetBrains/kotlin-analysis-api @JetBrains/kotlin-build-infrastructure
 
 /analysis/ @JetBrains/kotlin-analysis-api
 /analysis/analysis-api-fir/gen/ @JetBrains/kotlin-frontend
