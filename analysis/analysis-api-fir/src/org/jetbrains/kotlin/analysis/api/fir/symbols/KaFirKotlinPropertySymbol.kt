@@ -43,6 +43,7 @@ import org.jetbrains.kotlin.psi.psiUtil.containingClassOrObject
 import org.jetbrains.kotlin.psi.psiUtil.isActualDeclaration
 import org.jetbrains.kotlin.psi.psiUtil.isExpectDeclaration
 import org.jetbrains.kotlin.psi.psiUtil.isExtensionDeclaration
+import org.jetbrains.kotlin.psi.psiUtil.isExternalDeclaration
 import org.jetbrains.kotlin.utils.exceptions.requireWithAttachment
 import org.jetbrains.kotlin.utils.exceptions.withPsiEntry
 
@@ -343,7 +344,7 @@ private class KaFirKotlinPropertyKtPropertyBasedSymbol : KaFirKotlinPropertySymb
 
     override val isExternal: Boolean
         get() = withValidityAssertion {
-            backingPsi?.hasModifier(KtTokens.EXTERNAL_KEYWORD) == true || firSymbol.isEffectivelyExternal(analysisSession.firSession)
+            backingPsi?.isExternalDeclaration() ?: firSymbol.isEffectivelyExternal(analysisSession.firSession)
         }
 
     // NB: `field` in accessors indicates the property should have a backing field. To see that, though, we need BODY_RESOLVE.
@@ -479,7 +480,7 @@ private class KaFirKotlinPropertyKtParameterBasedSymbol : KaFirKotlinPropertySym
 
     override val isExternal: Boolean
         get() = withValidityAssertion {
-            backingPsi?.hasModifier(KtTokens.EXTERNAL_KEYWORD) == true || firSymbol.isEffectivelyExternal(analysisSession.firSession)
+            backingPsi?.containingClassOrObject?.isExternalDeclaration() ?: firSymbol.isEffectivelyExternal(analysisSession.firSession)
         }
 
     override val hasBackingField: Boolean

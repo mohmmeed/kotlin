@@ -19,3 +19,10 @@ external enum class EnumE { EnumA, EnumB }
 external interface InterfaceI {
     fun fooI()
 }
+
+val propWithExternalGetter: Int
+    external get
+
+var propWithExternalAccessors: Int
+    external get
+    external set

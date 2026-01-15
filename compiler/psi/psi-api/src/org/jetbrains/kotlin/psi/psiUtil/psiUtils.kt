@@ -624,6 +624,8 @@ fun KtModifierList.hasValueModifier() = hasModifier(KtTokens.VALUE_KEYWORD)
 
 fun KtModifierListOwner.hasInnerModifier() = hasModifier(KtTokens.INNER_KEYWORD)
 
+fun KtModifierListOwner.hasExternalModifier(): Boolean = hasModifier(KtTokens.EXTERNAL_KEYWORD)
+
 fun ASTNode.children() = generateSequence(firstChildNode) { node -> node.treeNext }
 fun ASTNode.parents() = generateSequence(treeParent) { node -> node.treeParent }
 

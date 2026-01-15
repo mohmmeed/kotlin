@@ -39,6 +39,7 @@ import org.jetbrains.kotlin.psi.KtNamedFunction
 import org.jetbrains.kotlin.psi.psiUtil.isActualDeclaration
 import org.jetbrains.kotlin.psi.psiUtil.isExpectDeclaration
 import org.jetbrains.kotlin.psi.psiUtil.isExtensionDeclaration
+import org.jetbrains.kotlin.psi.psiUtil.isExternalDeclaration
 
 internal class KaFirNamedFunctionSymbol private constructor(
     override val backingPsi: KtNamedFunction?,
@@ -168,7 +169,7 @@ internal class KaFirNamedFunctionSymbol private constructor(
 
     override val isExternal: Boolean
         get() = withValidityAssertion {
-            backingPsi?.hasModifier(KtTokens.EXTERNAL_KEYWORD) == true || firSymbol.isEffectivelyExternal(analysisSession.firSession)
+            backingPsi?.isExternalDeclaration() ?: firSymbol.isEffectivelyExternal(analysisSession.firSession)
         }
 
     override val isInline: Boolean

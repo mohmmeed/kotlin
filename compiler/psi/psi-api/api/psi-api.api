@@ -3847,6 +3847,7 @@ public final class org/jetbrains/kotlin/psi/psiUtil/KtPsiUtilKt {
 	public static final fun isDoubleColonReceiver (Lorg/jetbrains/kotlin/psi/KtExpression;)Z
 	public static final fun isExpectDeclaration (Lorg/jetbrains/kotlin/psi/KtDeclaration;)Z
 	public static final fun isExtensionDeclaration (Lcom/intellij/psi/PsiElement;)Z
+	public static final fun isExternalDeclaration (Lorg/jetbrains/kotlin/psi/KtDeclaration;)Z
 	public static final fun isFirstStatement (Lorg/jetbrains/kotlin/psi/KtElement;)Z
 	public static final fun isFunctionalExpression (Lcom/intellij/psi/PsiElement;)Z
 	public static final fun isIdentifier (Ljava/lang/String;)Z
@@ -3957,6 +3958,7 @@ public final class org/jetbrains/kotlin/psi/psiUtil/PsiUtilsKt {
 	public static final fun hasActualModifier (Lorg/jetbrains/kotlin/psi/KtModifierListOwner;)Z
 	public static final fun hasExpectModifier (Lorg/jetbrains/kotlin/psi/KtModifierList;)Z
 	public static final fun hasExpectModifier (Lorg/jetbrains/kotlin/psi/KtModifierListOwner;)Z
+	public static final fun hasExternalModifier (Lorg/jetbrains/kotlin/psi/KtModifierListOwner;)Z
 	public static final fun hasFunModifier (Lorg/jetbrains/kotlin/psi/KtModifierList;)Z
 	public static final fun hasInnerModifier (Lorg/jetbrains/kotlin/psi/KtModifierListOwner;)Z
 	public static final fun hasSuspendModifier (Lorg/jetbrains/kotlin/psi/KtModifierList;)Z

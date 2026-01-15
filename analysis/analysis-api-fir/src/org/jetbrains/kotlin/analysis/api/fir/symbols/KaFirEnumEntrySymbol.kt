@@ -25,7 +25,9 @@ import org.jetbrains.kotlin.fir.symbols.lazyResolveToPhase
 import org.jetbrains.kotlin.name.CallableId
 import org.jetbrains.kotlin.name.Name
 import org.jetbrains.kotlin.psi.KtEnumEntry
+import org.jetbrains.kotlin.psi.psiUtil.containingClassOrObject
 import org.jetbrains.kotlin.psi.psiUtil.isExpectDeclaration
+import org.jetbrains.kotlin.psi.psiUtil.isExternalDeclaration
 
 internal class KaFirEnumEntrySymbol private constructor(
     override val backingPsi: KtEnumEntry?,
@@ -53,7 +55,9 @@ internal class KaFirEnumEntrySymbol private constructor(
         get() = withValidityAssertion { backingPsi?.isExpectDeclaration() ?: firSymbol.isExpect }
 
     override val isExternal: Boolean
-        get() = withValidityAssertion { firSymbol.isEffectivelyExternal(analysisSession.firSession) }
+        get() = withValidityAssertion {
+            backingPsi?.containingClassOrObject?.isExternalDeclaration() ?: firSymbol.isEffectivelyExternal(analysisSession.firSession)
+        }
 
     override val name: Name
         get() = withValidityAssertion { backingPsi?.nameAsSafeName ?: firSymbol.name }

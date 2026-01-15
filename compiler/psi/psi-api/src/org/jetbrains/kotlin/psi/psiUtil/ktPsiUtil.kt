@@ -347,6 +347,21 @@ fun KtDeclaration.isExpectDeclaration(): Boolean = when {
 }
 
 /**
+ * A helper method to determine if this PSI declaration is effectively `external`.
+ */
+fun KtDeclaration.isExternalDeclaration(): Boolean {
+    if (hasExternalModifier()) return true
+
+    if (this is KtProperty) {
+        if (getter?.hasExternalModifier() == true && (!isVar || setter?.hasExternalModifier() == true)) {
+            return true
+        }
+    }
+
+    return containingClassOrObject?.isExternalDeclaration() == true
+}
+
+/**
  * Checks if this declaration is an `actual`. This is the case if the declaration either has an explicit `actual` modifier, or if
  * it is a constructor of an annotation, value, or inline class
  */
