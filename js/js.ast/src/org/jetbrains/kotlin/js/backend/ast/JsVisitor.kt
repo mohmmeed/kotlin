@@ -210,6 +210,15 @@ abstract class JsVisitor {
     open fun visitSpread(spread: JsSpread): Unit =
         visitElement(spread)
 
+    open fun visitAssignable(assignable: JsAssignable): Unit =
+        visitElement(assignable)
+
+    open fun visitNamedAssignable(assignable: JsAssignable.Named): Unit =
+        visitAssignable(assignable)
+
+    open fun visitPatternAssignable(assignable: JsAssignable.Pattern): Unit =
+        visitAssignable(assignable)
+
     protected open fun visitElement(node: JsNode) {
     }
 }

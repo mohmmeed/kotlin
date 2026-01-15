@@ -251,6 +251,17 @@ public abstract class JsVisitorWithContext {
         endVisit((JsLoop) x, ctx);
     }
 
+    public void endVisit(@NotNull JsAssignable x, @NotNull JsContext ctx) {
+    }
+
+    public void endVisit(@NotNull JsAssignable.Named x, @NotNull JsContext ctx) {
+        endVisit((JsAssignable) x, ctx);
+    }
+
+    public void endVisit(@NotNull JsAssignable.Pattern x, @NotNull JsContext ctx) {
+        endVisit((JsAssignable) x, ctx);
+    }
+
     public boolean visit(@NotNull JsArrayAccess x, @NotNull JsContext ctx) {
         return true;
     }
@@ -484,6 +495,18 @@ public abstract class JsVisitorWithContext {
 
     public boolean visit(@NotNull JsSpread x, @NotNull JsContext ctx) {
         return true;
+    }
+
+    public boolean visit(@NotNull JsAssignable x, @NotNull JsContext ctx) {
+        return true;
+    }
+
+    public boolean visit(@NotNull JsAssignable.Named x, @NotNull JsContext ctx) {
+        return visit((JsAssignable) x, ctx);
+    }
+
+    public boolean visit(@NotNull JsAssignable.Pattern x, @NotNull JsContext ctx) {
+        return visit((JsAssignable) x, ctx);
     }
 
     protected abstract  <T extends JsNode> T doAccept(T node);
