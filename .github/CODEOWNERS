@@ -22,7 +22,7 @@
 
 /benchmarks/ @JetBrains/kotlin-frontend
 
-/build-common/ @JetBrains/kotlin-build-tools
+/build-common/ @JetBrains/kotlin-build-tools @JetBrains/build-tools-api
 
 /compiler/arguments.common/ @JetBrains/kotlin-frontend @JetBrains/kotlin-build-tools
 /compiler/arguments/ @JetBrains/kotlin-frontend @JetBrains/kotlin-build-tools

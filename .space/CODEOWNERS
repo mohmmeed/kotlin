@@ -54,7 +54,7 @@
 
 /benchmarks/ "Kotlin Frontend"
 
-/build-common/ "Kotlin Build Tools"
+/build-common/ "Kotlin Build Tools" "Build Tools API"
 
 /compiler/arguments.common/ "Kotlin Frontend" "Kotlin Build Tools"
 /compiler/arguments/ "Kotlin Frontend" "Kotlin Build Tools"
